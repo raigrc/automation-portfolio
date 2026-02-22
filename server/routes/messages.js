@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
     const n8nRes = await fetch("https://n8n.raigrc.com/webhook/new-lead", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(req.body),
+      body: JSON.stringify({ ...req.body, _id: message._id }),
     });
 
     console.log("n8n response status:", n8nRes.status);
