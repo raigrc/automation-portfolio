@@ -10,7 +10,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://n8n.raigrc.com"],
+    origin: ["http://localhost:5173", "https://n8n.raigrc.com", "https://portfolio.raigrc.com"],
     credentials: true,
   }),
 );
