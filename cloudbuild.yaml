@@ -4,7 +4,7 @@ steps:
       - build
       - '--no-cache'
       - -t
-      - $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
       - ./server
       - -f
       - ./server/Dockerfile
@@ -13,7 +13,7 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
     id: Push
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
@@ -21,18 +21,16 @@ steps:
       - run
       - services
       - update
-      - $_SERVICE_NAME
+      - automation-portfolio
       - '--platform=managed'
-      - --image=$_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-      - >-
-        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
-      - --region=$_DEPLOY_REGION
+      - --image=asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
+      - --region=asia-southeast1
       - --quiet
     id: Deploy
     entrypoint: gcloud
 
 images:
-  - $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+  - asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
 
 options:
   substitutionOption: ALLOW_LOOSE
