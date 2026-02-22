@@ -4,7 +4,7 @@ steps:
       - build
       - '--no-cache'
       - -t
-      - asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
+      - us-central1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
       - ./server
       - -f
       - ./server/Dockerfile
@@ -13,7 +13,7 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
+      - us-central1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
     id: Push
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
@@ -23,14 +23,14 @@ steps:
       - update
       - automation-portfolio
       - '--platform=managed'
-      - --image=asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
-      - --region=asia-southeast1
+      - --image=us-central1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
+      - --region=us-central1
       - --quiet
     id: Deploy
     entrypoint: gcloud
 
 images:
-  - asia-southeast1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
+  - us-central1-docker.pkg.dev/mythical-zodiac-450714-s3/cloud-run-source-deploy/automation-portfolio:$COMMIT_SHA
 
 options:
   substitutionOption: ALLOW_LOOSE
