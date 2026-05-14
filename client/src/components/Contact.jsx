@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import api from '../hooks/useApi';
 
-const RESUME_URL = 'https://drive.google.com/file/d/1kM9dhIbwR8kF3sz4s9x-oVmuUR8ouNTR/view?usp=sharing';
+const RESUME_URL = 'https://drive.google.com/file/d/1bAv4ITgZsKAireaXWUddg9Uf6DBQXf5H/view?usp=sharing';
 
 export default function Contact({ profile }) {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });

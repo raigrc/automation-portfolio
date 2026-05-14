@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const RESUME_URL = 'https://drive.google.com/file/d/1kM9dhIbwR8kF3sz4s9x-oVmuUR8ouNTR/view?usp=sharing';
+const RESUME_URL = 'https://drive.google.com/file/d/1bAv4ITgZsKAireaXWUddg9Uf6DBQXf5H/view?usp=sharing';
 
 const ICONS = [
   { id: 'about',      icon: '🖥️',  label: 'My Computer' },

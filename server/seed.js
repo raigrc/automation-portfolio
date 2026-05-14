@@ -24,7 +24,7 @@ async function seed() {
     linkedin: "https://linkedin.com/in/raigrc/",
     location: "Laguna, Philippines",
     resumeUrl:
-      "https://drive.google.com/file/d/1kM9dhIbwR8kF3sz4s9x-oVmuUR8ouNTR/view?usp=sharing",
+      "https://drive.google.com/file/d/1bAv4ITgZsKAireaXWUddg9Uf6DBQXf5H/view?usp=sharing",
   });
   console.log("Profile seeded");
 
