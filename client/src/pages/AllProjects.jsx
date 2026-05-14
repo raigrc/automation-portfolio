@@ -3,82 +3,141 @@ import { Link } from 'react-router-dom';
 import api from '../hooks/useApi';
 import { ProjectCard } from '../components/Projects';
 
+const COREMIND_PROJECTS = [
+  {
+    _id: 'cm-1',
+    title: 'EOD Report v2',
+    description: 'End-of-day automated report generator for CoreMind Technology. Aggregates daily metrics, team updates, and KPIs into a structured report delivered via Slack and email on schedule.',
+    tech: ['n8n', 'Slack API', 'OpenAI', 'MongoDB', 'Webhooks'],
+    featured: true,
+    company: 'Core Mind Technology',
+  },
+  {
+    _id: 'cm-2',
+    title: 'MightyWell Pipeline',
+    description: 'Automated lead intake and enrichment pipeline for MightyWell. Handles inbound lead data, enriches via external APIs, and routes qualified leads into the CRM automatically.',
+    tech: ['n8n', 'Make.com', 'REST APIs', 'MongoDB', 'Webhooks'],
+    featured: true,
+    company: 'Core Mind Technology',
+  },
+  {
+    _id: 'cm-3',
+    title: 'Auto-Posting Automation',
+    description: 'Social media auto-posting workflow that schedules and publishes AI-generated content across Facebook, Instagram, and LinkedIn with performance tracking.',
+    tech: ['n8n', 'Meta Graph API', 'LinkedIn API', 'Google Sheets', 'OpenAI'],
+    featured: true,
+    company: 'Core Mind Technology',
+  },
+  {
+    _id: 'cm-4',
+    title: 'Content Generation Pipeline',
+    description: 'AI-powered content generation system that produces blog posts, social media captions, and marketing copy using large language models with brand voice consistency.',
+    tech: ['n8n', 'OpenAI GPT-4', 'Claude AI', 'Google Docs API', 'Airtable'],
+    featured: true,
+    company: 'Core Mind Technology',
+  },
+  {
+    _id: 'cm-5',
+    title: 'Lead Enrichment Workflow',
+    description: 'Automated lead enrichment pipeline that augments raw contact data with company info, social profiles, and intent signals using multiple data providers and AI scoring.',
+    tech: ['n8n', 'Apollo.io', 'LinkedIn API', 'Clearbit', 'OpenAI'],
+    featured: true,
+    company: 'Core Mind Technology',
+  },
+  {
+    _id: 'cm-6',
+    title: 'CoreMind Actors',
+    description: 'AI agent orchestration system managing specialized agents for CoreMind sales, support, and operations tasks with persistent memory and context management.',
+    tech: ['n8n', 'Claude AI', 'OpenAI', 'Webhooks', 'MongoDB'],
+    featured: true,
+    company: 'Core Mind Technology',
+  },
+  {
+    _id: 'cm-7',
+    title: 'Leads Dashboard',
+    description: 'Real-time leads management dashboard for CoreMind Technology. Visualizes pipeline stages, conversion rates, and team performance metrics with live data updates.',
+    tech: ['Next.js', 'MongoDB', 'Recharts', 'Tailwind CSS', 'Node.js'],
+    featured: true,
+    company: 'Core Mind Technology',
+    githubUrl: 'https://github.com/raigrc/coremind-leads-dashboard',
+  },
+];
+
 export default function AllProjects() {
-  const [projects, setProjects] = useState([]);
+  const [apiProjects, setApiProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('All');
 
   useEffect(() => {
     api.get('/projects')
-      .then((res) => setProjects(res.data))
+      .then((res) => setApiProjects(res.data))
       .catch((err) => console.error('Failed to fetch projects:', err))
       .finally(() => setLoading(false));
   }, []);
 
-  // Only show tags that appear in 2+ projects as filters (avoids clutter)
+  const coremindTitles = new Set(COREMIND_PROJECTS.map((p) => p.title.toLowerCase()));
+  const extraProjects = apiProjects.filter((p) => !coremindTitles.has(p.title?.toLowerCase()));
+  const allProjects = [...COREMIND_PROJECTS, ...extraProjects];
+
   const techFilters = useMemo(() => {
     const counts = {};
-    projects.forEach((p) => p.tech?.forEach((t) => { counts[t] = (counts[t] || 0) + 1; }));
+    allProjects.forEach((p) => p.tech?.forEach((t) => { counts[t] = (counts[t] || 0) + 1; }));
     const repeated = Object.entries(counts)
       .filter(([, c]) => c >= 2)
       .sort((a, b) => b[1] - a[1])
       .map(([tag]) => tag);
     return ['All', ...repeated];
-  }, [projects]);
+  }, [allProjects.length]);
 
   const filtered = useMemo(() => {
-    if (activeFilter === 'All') return projects;
-    return projects.filter((p) => p.tech?.includes(activeFilter));
-  }, [projects, activeFilter]);
+    if (activeFilter === 'All') return allProjects;
+    return allProjects.filter((p) => p.tech?.includes(activeFilter));
+  }, [allProjects.length, activeFilter]);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-bg">
-        <div className="text-center space-y-4">
-          <div className="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-text-muted font-mono text-sm">Loading projects...</p>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#008080' }}>
+        <div className="win95-window" style={{ width: '300px' }}>
+          <div className="win95-titlebar">
+            <span>⏳</span>
+            <span>Loading Projects...</span>
+          </div>
+          <div style={{ padding: '20px', textAlign: 'center', fontSize: '12px' }}>Please wait...</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-bg min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 py-20">
+    <div style={{ background: '#C0C0C0', minHeight: '100vh', paddingTop: '40px' }}>
+      <div style={{ maxWidth: '960px', margin: '0 auto', padding: '20px 16px' }}>
 
         {/* Back link */}
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-text-muted hover:text-accent font-mono text-sm transition-colors mb-12"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-          </svg>
-          Back to Portfolio
+        <Link to="/" className="win95-btn" style={{ display: 'inline-block', marginBottom: '16px', padding: '4px 12px', fontSize: '12px' }}>
+          ← Back to Portfolio
         </Link>
 
         {/* Header */}
-        <div className="mb-12">
-          <p className="text-accent font-mono text-sm mb-2">{'// all work'}</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-text-primary">All Projects</h1>
-          <div className="mt-4 w-16 h-0.5 bg-primary" />
-          <p className="text-text-muted mt-4 text-sm max-w-lg">
+        <div className="win95-window" style={{ marginBottom: '16px' }}>
+          <div className="win95-titlebar">
+            <span>🗂️</span>
+            <span>All Projects</span>
+          </div>
+          <div style={{ padding: '8px 14px', fontSize: '12px', color: '#000000' }}>
             Every automation project, workflow, and AI integration I&apos;ve built.
-          </p>
+          </div>
         </div>
 
         {/* Filter bar */}
         {techFilters.length > 1 && (
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="win95-raised" style={{ padding: '8px', marginBottom: '12px', display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+            <span style={{ fontSize: '11px', color: '#444444', alignSelf: 'center', marginRight: '4px' }}>Filter:</span>
             {techFilters.map((tag) => (
               <button
                 key={tag}
                 onClick={() => setActiveFilter(tag)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 border ${
-                  activeFilter === tag
-                    ? 'bg-primary/20 border-primary/60 text-accent'
-                    : 'bg-surface border-border text-text-muted hover:border-primary/40 hover:text-accent'
-                }`}
+                className={activeFilter === tag ? 'win95-btn-primary' : 'win95-btn'}
+                style={{ fontSize: '11px', padding: '2px 10px', minWidth: 'auto' }}
               >
                 {tag}
               </button>
@@ -87,20 +146,20 @@ export default function AllProjects() {
         )}
 
         {/* Count */}
-        <p className="text-text-muted font-mono text-xs mb-6">
+        <div className="win95-sunken" style={{ padding: '3px 8px', fontSize: '11px', marginBottom: '12px', display: 'inline-block' }}>
           {filtered.length} project{filtered.length !== 1 ? 's' : ''}
-          {activeFilter !== 'All' && <span className="text-accent"> · {activeFilter}</span>}
-        </p>
+          {activeFilter !== 'All' && ` · ${activeFilter}`}
+        </div>
 
-        {/* Grid */}
+        {/* Project list */}
         {filtered.length === 0 ? (
-          <p className="text-center text-text-muted font-mono py-24">
+          <div className="win95-window" style={{ padding: '24px', textAlign: 'center', fontSize: '12px' }}>
             No projects match this filter.
-          </p>
+          </div>
         ) : (
-          <div className="flex flex-col gap-4">
+          <div>
             {filtered.map((project) => (
-              <ProjectCard key={project._id} project={project} />
+              <ProjectCard key={project._id} project={project} isCoremind={!!project.company} />
             ))}
           </div>
         )}

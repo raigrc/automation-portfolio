@@ -32,71 +32,80 @@ async function seed() {
   await Skill.deleteMany({});
   await Skill.insertMany([
     // Languages
-    { name: "JavaScript", category: "Languages", level: 80, order: 1 },
-    { name: "HTML", category: "Languages", level: 75, order: 2 },
-    { name: "CSS", category: "Languages", level: 75, order: 3 },
+    { name: "JavaScript", category: "Languages", level: 85, order: 1 },
+    { name: "TypeScript", category: "Languages", level: 78, order: 2 },
+    { name: "Python", category: "Languages", level: 72, order: 3 },
+    { name: "HTML", category: "Languages", level: 80, order: 4 },
+    { name: "CSS", category: "Languages", level: 78, order: 5 },
+
+    // Frameworks
+    { name: "React", category: "Frameworks", level: 80, order: 1 },
+    { name: "Next.js", category: "Frameworks", level: 78, order: 2 },
+    { name: "Tailwind CSS", category: "Frameworks", level: 85, order: 3 },
 
     // Automation Tools
     { name: "n8n", category: "Automation Tools", level: 95, order: 1 },
-    {
-      name: "MCP (Model Context Protocol)",
-      category: "Automation Tools",
-      level: 92,
-      order: 2,
-    },
+    { name: "MCP", category: "Automation Tools", level: 92, order: 2 },
     { name: "REST APIs", category: "Automation Tools", level: 90, order: 3 },
-    {
-      name: "WhatsApp Business API (Z-API)",
-      category: "Automation Tools",
-      level: 88,
-      order: 4,
-    },
-    {
-      name: "Telegram Bot API",
-      category: "Automation Tools",
-      level: 82,
-      order: 5,
-    },
+    { name: "WhatsApp Business API (Z-API)", category: "Automation Tools", level: 88, order: 4 },
+    { name: "Telegram Bot API", category: "Automation Tools", level: 82, order: 5 },
     { name: "Meta API", category: "Automation Tools", level: 80, order: 6 },
-    { name: "Firecrawl", category: "Automation Tools", level: 78, order: 7 },
-    { name: "fal.ai", category: "Automation Tools", level: 78, order: 8 },
-    { name: "Replicate", category: "Automation Tools", level: 80, order: 9 },
-    { name: "Google TTS", category: "Automation Tools", level: 76, order: 10 },
-    {
-      name: "Google Cloud Functions",
-      category: "Automation Tools",
-      level: 75,
-      order: 11,
-    },
+    { name: "Slack API", category: "Automation Tools", level: 80, order: 7 },
+    { name: "Google Cloud Functions", category: "Automation Tools", level: 75, order: 8 },
+    { name: "Smartlead", category: "Automation Tools", level: 75, order: 9 },
+    { name: "Close CRM", category: "Automation Tools", level: 72, order: 10 },
 
-    // Databases
-    { name: "MongoDB", category: "Databases", level: 85, order: 1 },
-    { name: "MySQL", category: "Databases", level: 75, order: 2 },
+    // Scraping & Data
+    { name: "Apify", category: "Scraping & Data", level: 80, order: 1 },
+    { name: "Crawlee", category: "Scraping & Data", level: 75, order: 2 },
+    { name: "Firecrawl", category: "Scraping & Data", level: 78, order: 3 },
 
     // AI Models
-    {
-      name: "OpenAI (GPT-4.1 / TTS)",
-      category: "AI Models",
-      level: 90,
-      order: 1,
-    },
-    { name: "Claude (Anthropic)", category: "AI Models", level: 88, order: 2 },
+    { name: "OpenAI (GPT-4.1/TTS)", category: "AI Models", level: 92, order: 1 },
+    { name: "Claude (Anthropic)", category: "AI Models", level: 90, order: 2 },
     { name: "Google Gemini", category: "AI Models", level: 85, order: 3 },
     { name: "Hume AI", category: "AI Models", level: 82, order: 4 },
     { name: "ElevenLabs", category: "AI Models", level: 82, order: 5 },
-    { name: "Mistral / Qwen", category: "AI Models", level: 78, order: 6 },
-    { name: "OpenRouter", category: "AI Models", level: 80, order: 7 },
+    { name: "Mistral/Qwen", category: "AI Models", level: 78, order: 6 },
+    { name: "OpenRouter", category: "AI Models", level: 82, order: 7 },
+    { name: "fal.ai", category: "AI Models", level: 78, order: 8 },
+    { name: "Replicate", category: "AI Models", level: 76, order: 9 },
+    { name: "Google TTS", category: "AI Models", level: 76, order: 10 },
 
-    // Other
-    { name: "Google Workspace", category: "Other", level: 85, order: 1 },
-    { name: "Git", category: "Other", level: 80, order: 2 },
-    { name: "Docker", category: "Other", level: 60, order: 3 },
+    // DevOps & CI/CD
+    { name: "GitHub Actions", category: "DevOps & CI/CD", level: 78, order: 1 },
+    { name: "Vercel", category: "DevOps & CI/CD", level: 82, order: 2 },
+    { name: "Docker", category: "DevOps & CI/CD", level: 65, order: 3 },
+    { name: "Git", category: "DevOps & CI/CD", level: 85, order: 4 },
+    { name: "pnpm", category: "DevOps & CI/CD", level: 80, order: 5 },
+
+    // Databases
+    { name: "MongoDB", category: "Databases", level: 85, order: 1 },
+    { name: "Supabase", category: "Databases", level: 78, order: 2 },
+    { name: "PostgreSQL", category: "Databases", level: 72, order: 3 },
+    { name: "MySQL", category: "Databases", level: 75, order: 4 },
   ]);
   console.log("Skills seeded");
 
   // Experience
   await Experience.deleteMany({});
   await Experience.insertMany([
+    {
+      company: "Core Mind Technology",
+      role: "Manager, AI/Dev Department",
+      type: "Full-time",
+      location: "Remote",
+      startDate: "March 2026",
+      endDate: "Present",
+      current: true,
+      order: 1,
+      bullets: [
+        "Promoted from Mid-Level AI Engineer to Manager within 2 months; lead a team of 3 mid-level engineers and an intern cohort, conduct technical interviews, and delegate complex workflow builds across client projects.",
+        "Engineered EOD reporting system routing 22-FTE daily submissions via Formaloo and n8n to Slack with direct and skip-level escalation logic, replacing a manual process across the full company.",
+        "Built multi-source lead acquisition pipeline (Facebook, Reddit, Google Maps via Apify) with AI scoring and automated Hot/Warm/Cold routing for client MightyWell's health enrollment campaign.",
+        "Developed cross-platform social auto-posting automation across Facebook, Instagram, TikTok, X, and LinkedIn serving CoreMind and its subsidiaries using n8n and respective platform APIs.",
+      ],
+    },
     {
       company: "Omelas AI",
       role: "AI-Driven Programmer & n8n Automation Developer",
@@ -105,7 +114,7 @@ async function seed() {
       startDate: "February 2025",
       endDate: "February 2026",
       current: false,
-      order: 1,
+      order: 2,
       bullets: [
         "Developed AI voice chatbot system for HypnoElp mobile hypnotherapy application using webhook-triggered architecture, providing real-time conversational support for users addressing sleep disorders, smoking cessation, anxiety, and stress management.",
         "Integrated Hume AI emotional intelligence and Eleven Labs voice synthesis APIs to create natural, empathetic voice interactions for personalized hypnotherapy guidance.",
@@ -122,7 +131,7 @@ async function seed() {
       startDate: "September 2025",
       endDate: "November 2025",
       current: false,
-      order: 2,
+      order: 3,
       bullets: [
         "Received project briefs and built n8n automation workflows from scratch based on client requirements, covering use cases such as content marketing systems, AI-powered stock analysis agents, WhatsApp business chatbots, video generation pipelines, and Facebook Marketplace automation.",
         "Wrote YouTube scripts and technical documentation for each boss-approved workflow, giving content creators clear guidelines on workflow logic, API integrations, and step-by-step setup.",
@@ -138,7 +147,7 @@ async function seed() {
       startDate: "April 2024",
       endDate: "July 2024",
       current: false,
-      order: 3,
+      order: 4,
       bullets: [
         "Optimized administrative processes through automation, improving operational efficiency by 20% via systematic tracking and automated follow-up procedures.",
         "Created and maintained comprehensive databases using Excel with automated data validation and reporting features to track over 200 records, reducing manual data entry time by 30%.",

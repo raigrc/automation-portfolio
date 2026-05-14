@@ -6,6 +6,13 @@ const roles = [
   'AI Workflow Architect',
 ];
 
+const SHORTCUTS = [
+  { icon: '🗂️', label: 'My Projects.exe', target: 'projects' },
+  { icon: '⚙️', label: 'skills.txt', target: 'skills' },
+  { icon: '💼', label: 'experience.doc', target: 'experience' },
+  { icon: '✉️', label: 'contact.lnk', target: 'contact' },
+];
+
 export default function Hero({ profile }) {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
@@ -32,80 +39,144 @@ export default function Hero({ profile }) {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `linear-gradient(#7C3AED 1px, transparent 1px), linear-gradient(90deg, #7C3AED 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
-
-      {/* Glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-accent/15 rounded-full blur-3xl" />
-
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Greeting */}
-        <p className="text-text-muted text-sm font-mono mb-4 animate-fade-in">
-          <span className="text-accent">{'>'}</span> Hello, World! I&apos;m
-        </p>
-
-        {/* Name */}
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-4 animate-slide-up">
-          <span className="text-gradient">{profile?.name ?? 'Your Name'}</span>
-        </h1>
-
-        {/* Typewriter role */}
-        <div className="h-10 flex items-center justify-center mb-6">
-          <p className="text-xl md:text-2xl font-mono text-text-muted">
-            <span className="text-primary-hover">{displayed}</span>
-            <span className="animate-blink text-accent">|</span>
-          </p>
-        </div>
-
-        {/* Subtitle */}
-        {profile?.subtitle && (
-          <p className="text-text-muted text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            {profile.subtitle}
-          </p>
-        )}
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            onClick={() => scrollTo('projects')}
-            className="px-8 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-all duration-200 glow-purple-sm hover:glow-purple hover:scale-105"
-          >
-            View Projects
-          </button>
-          <button
-            onClick={() => scrollTo('contact')}
-            className="px-8 py-3 border border-primary text-primary hover:bg-primary/10 font-semibold rounded-lg transition-all duration-200 hover:scale-105"
-          >
-            Contact Me
-          </button>
-          {/* {profile?.resumeUrl && (
-            <a
-              href={profile.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 border border-border text-text-muted hover:border-accent hover:text-accent font-semibold rounded-lg transition-all duration-200 hover:scale-105"
+    <section
+      id="hero"
+      style={{
+        minHeight: '100vh',
+        background: '#008080',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: '48px',
+        paddingBottom: '48px',
+      }}
+    >
+      {/* Main portfolio window */}
+      <div className="win95-window" style={{ width: '100%', maxWidth: '680px', margin: '0 16px' }}>
+        {/* Title bar */}
+        <div className="win95-titlebar">
+          <span>🖥</span>
+          <span>Welcome — Automation Developer Portfolio</span>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: '2px' }}>
+            <button
+              className="win95-raised"
+              style={{ width: '16px', height: '14px', fontSize: '9px', padding: '0', cursor: 'default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              Download Resume
-            </a>
-          )} */}
+              _
+            </button>
+            <button
+              className="win95-raised"
+              style={{ width: '16px', height: '14px', fontSize: '9px', padding: '0', cursor: 'default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              □
+            </button>
+            <button
+              className="win95-raised"
+              style={{ width: '16px', height: '14px', fontSize: '9px', padding: '0', cursor: 'default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              ✕
+            </button>
+          </div>
         </div>
 
+        {/* Window content */}
+        <div style={{ padding: '24px 32px', textAlign: 'center' }}>
+          <p style={{ fontSize: '11px', color: '#444444', marginBottom: '8px', fontFamily: 'monospace' }}>
+            C:\PORTFOLIO&gt; Hello, World! I&apos;m
+          </p>
+
+          <h1 style={{ fontSize: '36px', fontWeight: 'bold', color: '#000080', marginBottom: '8px', lineHeight: 1.2 }}>
+            {profile?.name ?? 'Your Name'}
+          </h1>
+
+          <div style={{ height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+            <p style={{ fontSize: '16px', fontFamily: 'monospace', color: '#000080' }}>
+              {displayed}
+              <span className="animate-blink" style={{ color: '#000000' }}>|</span>
+            </p>
+          </div>
+
+          {profile?.subtitle && (
+            <p style={{ fontSize: '13px', color: '#444444', maxWidth: '480px', margin: '0 auto 20px', lineHeight: 1.5 }}>
+              {profile.subtitle}
+            </p>
+          )}
+
+          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
+            <button onClick={() => scrollTo('projects')} className="win95-btn-primary">
+              View Projects
+            </button>
+            <button onClick={() => scrollTo('contact')} className="win95-btn">
+              Contact Me
+            </button>
+          </div>
+        </div>
+
+        {/* Status bar */}
+        <div className="win95-status-bar" style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+          <div className="win95-sunken" style={{ padding: '1px 8px', fontSize: '11px', flex: 1 }}>
+            Ready
+          </div>
+          <div className="win95-sunken" style={{ padding: '1px 8px', fontSize: '11px' }}>
+            Automation Developer
+          </div>
+        </div>
       </div>
 
-      {/* Scroll indicator — child of section so it anchors to viewport bottom */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-text-muted animate-bounce">
-        <span className="text-xs font-mono">scroll</span>
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+      {/* Desktop shortcut icons */}
+      <div
+        style={{
+          display: 'flex',
+          gap: '28px',
+          marginTop: '32px',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          padding: '0 16px',
+        }}
+      >
+        {SHORTCUTS.map(({ icon, label, target }) => (
+          <button
+            key={target}
+            onClick={() => scrollTo(target)}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '6px',
+              width: '72px',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.querySelector('.shortcut-label').style.background = '#000080';
+              e.currentTarget.querySelector('.shortcut-label').style.color = '#FFFFFF';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.querySelector('.shortcut-label').style.background = 'transparent';
+              e.currentTarget.querySelector('.shortcut-label').style.color = '#FFFFFF';
+            }}
+          >
+            <span style={{ fontSize: '36px', lineHeight: 1 }}>{icon}</span>
+            <span
+              className="shortcut-label"
+              style={{
+                fontSize: '11px',
+                color: '#FFFFFF',
+                textShadow: '1px 1px 1px #000000',
+                textAlign: 'center',
+                lineHeight: 1.2,
+                padding: '1px 2px',
+                wordBreak: 'break-word',
+                width: '100%',
+              }}
+            >
+              {label}
+            </span>
+          </button>
+        ))}
       </div>
     </section>
   );

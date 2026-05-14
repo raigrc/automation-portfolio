@@ -4,13 +4,20 @@ import Portfolio from './pages/Portfolio';
 import AllProjects from './pages/AllProjects';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import Taskbar from './components/Taskbar';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated, loading } = useAuth();
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-bg">
-        <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#008080' }}>
+        <div className="win95-window" style={{ padding: '20px 40px', textAlign: 'center' }}>
+          <div className="win95-titlebar" style={{ marginBottom: '12px' }}>
+            <span>⏳</span>
+            <span>Please Wait...</span>
+          </div>
+          <p style={{ fontSize: '12px' }}>Loading...</p>
+        </div>
       </div>
     );
   }
@@ -35,6 +42,7 @@ export default function App() {
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <Taskbar />
       </Router>
     </AuthProvider>
   );

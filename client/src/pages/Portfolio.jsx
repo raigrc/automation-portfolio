@@ -8,6 +8,20 @@ import Projects from '../components/Projects';
 import Experience from '../components/Experience';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+function SectionBreak() {
+  return (
+    <div style={{ padding: '0 32px' }}>
+      <div
+        style={{
+          height: '4px',
+          borderTop: '2px solid #808080',
+          borderBottom: '2px solid #FFFFFF',
+          background: '#C0C0C0',
+        }}
+      />
+    </div>
+  );
+}
 
 export default function Portfolio() {
   const [profile, setProfile] = useState(null);
@@ -27,10 +41,7 @@ export default function Portfolio() {
         ]);
         setProfile(profileRes.data);
         setSkills(skillsRes.data);
-        const all = projectsRes.data;
-        const featured = all.filter((p) => p.featured);
-        const teaser = all.find((p) => !p.featured);
-        setProjects(teaser ? [...featured, teaser] : featured);
+        setProjects(projectsRes.data);
         setExperience(expRes.data);
       } catch (err) {
         console.error('Failed to fetch portfolio data:', err);
@@ -43,25 +54,40 @@ export default function Portfolio() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-bg">
-        <div className="text-center space-y-4">
-          <div className="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-text-muted font-mono text-sm">Loading portfolio...</p>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#008080' }}>
+        <div className="win95-window" style={{ width: '300px' }}>
+          <div className="win95-titlebar">
+            <span>⏳</span>
+            <span>Loading Portfolio...</span>
+          </div>
+          <div style={{ padding: '20px', textAlign: 'center' }}>
+            <p style={{ fontSize: '12px', marginBottom: '12px' }}>Please wait...</p>
+            <div className="win95-sunken" style={{ height: '16px', background: '#FFFFFF', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '40%', background: '#000080' }} />
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-bg min-h-screen">
+    <div style={{ background: '#C0C0C0', minHeight: '100vh', paddingBottom: '40px' }}>
       <Navbar profile={profile} />
-      <Hero profile={profile} />
-      <About profile={profile} />
-      <Skills skills={skills} />
-      <Projects projects={projects} showFade />
-      <Experience experience={experience} />
-      <Contact profile={profile} />
-      <Footer profile={profile} />
+      <div style={{ paddingTop: '32px' }}>
+        <Hero profile={profile} />
+        <SectionBreak />
+        <About profile={profile} />
+        <SectionBreak />
+        <Skills skills={skills} />
+        <SectionBreak />
+        <Projects projects={projects} showFade />
+        <SectionBreak />
+        <Experience experience={experience} />
+        <SectionBreak />
+        <Contact profile={profile} />
+        <Footer profile={profile} />
+      </div>
     </div>
   );
 }
