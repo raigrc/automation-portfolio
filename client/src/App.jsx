@@ -4,8 +4,6 @@ import Portfolio from './pages/Portfolio';
 import AllProjects from './pages/AllProjects';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
-import Taskbar from './components/Taskbar';
-
 function ProtectedRoute({ children }) {
   const { isAuthenticated, loading } = useAuth();
   if (loading) {
@@ -42,7 +40,6 @@ export default function App() {
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-        <Taskbar />
       </Router>
     </AuthProvider>
   );

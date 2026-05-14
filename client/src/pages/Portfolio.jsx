@@ -1,34 +1,18 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import api from '../hooks/useApi';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import Experience from '../components/Experience';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-function SectionBreak() {
-  return (
-    <div style={{ padding: '0 32px' }}>
-      <div
-        style={{
-          height: '4px',
-          borderTop: '2px solid #808080',
-          borderBottom: '2px solid #FFFFFF',
-          background: '#C0C0C0',
-        }}
-      />
-    </div>
-  );
-}
+import { useIsMobile } from '../hooks/useIsMobile';
+import BootScreen from '../components/BootScreen';
+import DesktopIcons from '../components/DesktopIcons';
+import MainWindow from '../components/MainWindow';
+import Taskbar from '../components/Taskbar';
 
 export default function Portfolio() {
-  const [profile, setProfile] = useState(null);
-  const [skills, setSkills] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [experience, setExperience] = useState([]);
+  const isMobile = useIsMobile();
+  const [booted, setBooted] = useState(() => sessionStorage.getItem('ravenos_booted') === '1');
+  const [activeTab, setActiveTab] = useState('about');
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({ profile: null, skills: [], projects: [], experience: [] });
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -39,10 +23,12 @@ export default function Portfolio() {
           api.get('/projects'),
           api.get('/experience'),
         ]);
-        setProfile(profileRes.data);
-        setSkills(skillsRes.data);
-        setProjects(projectsRes.data);
-        setExperience(expRes.data);
+        setData({
+          profile: profileRes.data,
+          skills: skillsRes.data,
+          projects: projectsRes.data,
+          experience: expRes.data,
+        });
       } catch (err) {
         console.error('Failed to fetch portfolio data:', err);
       } finally {
@@ -52,42 +38,56 @@ export default function Portfolio() {
     fetchAll();
   }, []);
 
-  if (loading) {
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#008080' }}>
-        <div className="win95-window" style={{ width: '300px' }}>
-          <div className="win95-titlebar">
-            <span>⏳</span>
-            <span>Loading Portfolio...</span>
-          </div>
-          <div style={{ padding: '20px', textAlign: 'center' }}>
-            <p style={{ fontSize: '12px', marginBottom: '12px' }}>Please wait...</p>
-            <div className="win95-sunken" style={{ height: '16px', background: '#FFFFFF', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '40%', background: '#000080' }} />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const handleBoot = () => {
+    sessionStorage.setItem('ravenos_booted', '1');
+    setBooted(true);
+  };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
 
   return (
-    <div style={{ background: '#C0C0C0', minHeight: '100vh', paddingBottom: '40px' }}>
-      <Navbar profile={profile} />
-      <div style={{ paddingTop: '32px' }}>
-        <Hero profile={profile} />
-        <SectionBreak />
-        <About profile={profile} />
-        <SectionBreak />
-        <Skills skills={skills} />
-        <SectionBreak />
-        <Projects projects={projects} showFade />
-        <SectionBreak />
-        <Experience experience={experience} />
-        <SectionBreak />
-        <Contact profile={profile} />
-        <Footer profile={profile} />
-      </div>
-    </div>
+    <>
+      {!booted && <BootScreen onComplete={handleBoot} />}
+
+      {/* Desktop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: booted ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+        style={{
+          minHeight: '100vh',
+          paddingBottom: '38px',
+          background: '#008080',
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '0',
+        }}
+      >
+        {/* Left column: desktop icons — hidden on mobile */}
+        {!isMobile && <DesktopIcons activeTab={activeTab} onTabChange={handleTabChange} />}
+
+        {/* Main area: centered window */}
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            padding: isMobile ? '6px 4px' : '12px 16px 12px 8px',
+          }}
+        >
+          <MainWindow
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+            data={data}
+            loading={loading}
+          />
+        </div>
+      </motion.div>
+
+      <Taskbar activeTab={activeTab} onTabChange={handleTabChange} />
+    </>
   );
 }

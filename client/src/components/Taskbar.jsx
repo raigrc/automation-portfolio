@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
-export default function Taskbar() {
+const TAB_LABELS = {
+  about:      '🖥️ My Computer',
+  projects:   '📁 My Projects',
+  skills:     '⚙️ Control Panel',
+  experience: '📄 Work History.txt',
+  contact:    '✉️ Contact.exe',
+};
+
+export default function Taskbar({ activeTab, onTabChange }) {
+  const isMobile = useIsMobile();
   const [time, setTime] = useState('');
 
   useEffect(() => {
@@ -15,10 +25,17 @@ export default function Taskbar() {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const separator = (
+    <div
+      style={{
+        width: '2px',
+        height: '24px',
+        borderLeft: '1px solid #808080',
+        borderRight: '1px solid #FFFFFF',
+        flexShrink: 0,
+      }}
+    />
+  );
 
   return (
     <div
@@ -40,7 +57,7 @@ export default function Taskbar() {
     >
       {/* Start button */}
       <button
-        className="win95-btn"
+        className="win-button"
         style={{
           fontWeight: 'bold',
           padding: '2px 10px',
@@ -48,73 +65,43 @@ export default function Taskbar() {
           display: 'flex',
           alignItems: 'center',
           gap: '4px',
-          minWidth: 'auto',
           height: '26px',
         }}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() => onTabChange?.('about')}
       >
-        <span style={{ fontSize: '14px' }}>🪟</span> Start
+        <span style={{ fontSize: '14px' }}>🪟</span>{!isMobile && ' Start'}
       </button>
 
-      {/* Vertical separator */}
-      <div
-        style={{
-          width: '2px',
-          height: '24px',
-          borderLeft: '1px solid #808080',
-          borderRight: '1px solid #FFFFFF',
-          flexShrink: 0,
-        }}
-      />
+      {separator}
 
-      {/* Quick nav buttons */}
-      <button
-        className="win95-btn"
-        style={{ padding: '2px 8px', fontSize: '11px', minWidth: 'auto', height: '26px' }}
-        onClick={() => scrollTo('about')}
-      >
-        👤 About
-      </button>
-      <button
-        className="win95-btn"
-        style={{ padding: '2px 8px', fontSize: '11px', minWidth: 'auto', height: '26px' }}
-        onClick={() => scrollTo('projects')}
-      >
-        🗂️ Projects
-      </button>
-      <button
-        className="win95-btn"
-        style={{ padding: '2px 8px', fontSize: '11px', minWidth: 'auto', height: '26px' }}
-        onClick={() => scrollTo('skills')}
-      >
-        ⚙️ Skills
-      </button>
-      <button
-        className="win95-btn"
-        style={{ padding: '2px 8px', fontSize: '11px', minWidth: 'auto', height: '26px' }}
-        onClick={() => scrollTo('contact')}
-      >
-        ✉️ Contact
-      </button>
+      {/* Active window button */}
+      {activeTab && (
+        <button
+          className={activeTab ? 'taskbar-btn taskbar-btn-active' : 'taskbar-btn'}
+          style={{
+            padding: '2px 10px',
+            fontSize: '11px',
+            height: '26px',
+            maxWidth: isMobile ? '120px' : '220px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {TAB_LABELS[activeTab] ?? '🪟 RavenOS 95'}
+        </button>
+      )}
 
       {/* Spacer */}
       <div style={{ flex: 1 }} />
 
-      {/* Right area separator */}
-      <div
-        style={{
-          width: '2px',
-          height: '24px',
-          borderLeft: '1px solid #808080',
-          borderRight: '1px solid #FFFFFF',
-          flexShrink: 0,
-        }}
-      />
+      {separator}
 
       {/* Clock */}
       <div
-        className="win95-sunken"
         style={{
+          border: '2px solid',
+          borderColor: '#808080 #FFFFFF #FFFFFF #808080',
           padding: '2px 10px',
           fontSize: '12px',
           minWidth: '52px',
@@ -124,6 +111,7 @@ export default function Taskbar() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          background: '#C0C0C0',
         }}
       >
         {time}

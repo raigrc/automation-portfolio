@@ -14,10 +14,10 @@ async function seed() {
   await Profile.deleteMany({});
   await Profile.create({
     name: "Raven Justin P. Garcia",
-    title: "AI-Driven Programmer & n8n Automation Developer",
+    title: "AI Engineer & Automation Developer",
     subtitle:
       "Developer specializing in AI automation workflows, MCP integrations, and multi-platform business systems.",
-    bio: "Most of what I do lives inside n8n — wiring up AI models, messaging platforms, and business APIs into workflows that run on their own. I've shipped a voice AI therapy assistant, a WhatsApp automation system, an automated package tracker, and video generation pipelines. I like building things that keep working while nobody's watching.",
+    bio: "Most of what I do lives inside n8n — wiring up AI models, scraping pipelines, and business APIs into workflows that run on their own. I've shipped a voice AI therapy assistant, a WhatsApp automation system, a multi-source lead acquisition pipeline, and cross-platform social automation across 5 platforms. Recently promoted to manage the AI/Dev department at Core Mind Technology — I still write the code, I just also make sure the team does too. I like building things that keep working while nobody's watching.",
     image:
       "https://pub-2dac9c19287347b4a58fd27871bed5d9.r2.dev/RDP%2051112%20GARCIA-low.png",
     email: "ravenjstn.grc@gmail.com",
@@ -108,7 +108,7 @@ async function seed() {
     },
     {
       company: "Omelas AI",
-      role: "AI-Driven Programmer & n8n Automation Developer",
+      role: "AI Engineer & Automation Developer",
       type: "Full-time",
       location: "Remote",
       startDate: "February 2025",
