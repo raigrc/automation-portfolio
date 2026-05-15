@@ -35,7 +35,7 @@ export default function ExperienceTab({ experience, loading }) {
 {`WORK HISTORY — Raven Justin P. Garcia
 ======================================
 AI Automation Developer | n8n Specialist
-Last modified: 2025
+Last modified: 2026
 
 `}
           {jobs.length === 0 ? (
@@ -50,7 +50,7 @@ Last modified: 2025
 
               return (
                 `${'─'.repeat(50)}\n` +
-                `POSITION : ${job.title ?? 'N/A'}\n` +
+                `POSITION : ${job.role ?? 'N/A'}\n` +
                 `COMPANY  : ${job.company ?? 'N/A'}\n` +
                 `PERIOD   : ${job.startDate ?? ''} – ${job.endDate ?? 'Present'}\n` +
                 `LOCATION : ${job.location ?? 'Philippines'}\n` +
