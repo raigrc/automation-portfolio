@@ -17,7 +17,7 @@ export default function AboutTab({ profile, loading, isMobile }) {
   const properties = [
     { label: 'Name',     value: profile?.name ?? 'N/A' },
     { label: 'Role',     value: profile?.title ?? 'AI Engineer & Automation Developer' },
-    { label: 'Stack',    value: 'n8n · React · Node.js · MongoDB · OpenAI' },
+    { label: 'Stack',    value: profile?.stack ?? 'n8n · React · Node.js · MongoDB · OpenAI' },
     { label: 'Status',   value: '● Open to Work' },
     { label: 'Location', value: profile?.location ?? 'Philippines' },
     { label: 'Email',    value: profile?.email ?? 'N/A' },

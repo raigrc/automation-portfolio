@@ -89,7 +89,7 @@ function DeleteButton({ onDelete }) {
 
 /* ─────────────────── Profile Tab ─────────────────── */
 function ProfileTab() {
-  const [profile, setProfile] = useState({ name: '', title: '', subtitle: '', bio: '', image: '', email: '', github: '', linkedin: '', resumeUrl: '', location: '' });
+  const [profile, setProfile] = useState({ name: '', title: '', stack: '', bio: '', image: '', email: '', github: '', linkedin: '', resumeUrl: '', location: '' });
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState('');
 
@@ -119,7 +119,7 @@ function ProfileTab() {
         <Input label="Full Name" name="name" value={profile.name} onChange={onChange} />
         <Input label="Title / Role" name="title" value={profile.title} onChange={onChange} />
       </div>
-      <Input label="Subtitle (hero tagline)" name="subtitle" value={profile.subtitle} onChange={onChange} />
+      <Input label="Stack (shown in About tab)" name="stack" value={profile.stack} onChange={onChange} placeholder="n8n · React · Node.js · MongoDB · OpenAI" />
       <Textarea label="Bio" name="bio" value={profile.bio} onChange={onChange} rows={4} />
       <div className="grid grid-cols-2 gap-4">
         <Input label="Email" name="email" type="email" value={profile.email} onChange={onChange} />
@@ -138,7 +138,7 @@ function ProfileTab() {
 }
 
 /* ─────────────────── Skills Tab ─────────────────── */
-const SKILL_CATEGORIES = ['Languages', 'Frameworks', 'Automation Tools', 'CI/CD', 'Databases', 'Other'];
+const SKILL_CATEGORIES = ['Languages', 'Frameworks', 'Automation Tools', 'Scraping & Data', 'AI Models', 'DevOps & CI/CD', 'Databases'];
 const emptySkill = { name: '', category: 'Automation Tools', level: 80 };
 
 function SkillsTab() {
@@ -218,7 +218,7 @@ function SkillsTab() {
 }
 
 /* ─────────────────── Projects Tab ─────────────────── */
-const emptyProject = { title: '', description: '', tech: '', githubUrl: '', liveUrl: '', image: '', featured: false };
+const emptyProject = { title: '', description: '', tech: '', githubUrl: '', liveUrl: '' };
 
 function ProjectsTab() {
   const [projects, setProjects] = useState([]);
@@ -290,11 +290,6 @@ function ProjectsTab() {
             <Input label="Tech Stack (comma-separated)" name="tech" value={form.tech} onChange={onChange} placeholder="Playwright, TypeScript, GitHub Actions" />
             <Input label="GitHub URL" name="githubUrl" value={form.githubUrl} onChange={onChange} />
             <Input label="Live Demo URL" name="liveUrl" value={form.liveUrl} onChange={onChange} />
-            <Input label="Image URL" name="image" value={form.image} onChange={onChange} />
-            <label className="flex items-center gap-2 text-sm text-text-muted cursor-pointer">
-              <input type="checkbox" name="featured" checked={form.featured} onChange={onChange} className="accent-primary" />
-              Mark as Featured
-            </label>
             <div className="flex gap-3 pt-2">
               <button type="submit" className="px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm rounded-lg">Save</button>
               <button type="button" onClick={() => setModal(null)} className="px-4 py-2 bg-surface2 text-text-muted text-sm rounded-lg border border-border">Cancel</button>

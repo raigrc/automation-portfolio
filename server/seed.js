@@ -20,6 +20,7 @@ async function seed() {
     bio: "Most of what I do lives inside n8n — wiring up AI models, scraping pipelines, and business APIs into workflows that run on their own. I've shipped a voice AI therapy assistant, a WhatsApp automation system, a multi-source lead acquisition pipeline, and cross-platform social automation across 5 platforms. Recently promoted to manage the AI/Dev department at Core Mind Technology — I still write the code, I just also make sure the team does too. I like building things that keep working while nobody's watching.",
     image:
       "https://pub-2dac9c19287347b4a58fd27871bed5d9.r2.dev/RDP%2051112%20GARCIA-low.png",
+    stack: "n8n · React · Node.js · MongoDB · OpenAI",
     email: "ravenjstn.grc@gmail.com",
     linkedin: "https://linkedin.com/in/raigrc/",
     location: "Laguna, Philippines",

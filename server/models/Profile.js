@@ -12,6 +12,7 @@ const profileSchema = new mongoose.Schema(
     linkedin: { type: String },
     resumeUrl: { type: String },
     location: { type: String },
+    stack: { type: String },
   },
   { timestamps: true }
 );
