@@ -12,7 +12,7 @@ const ICONS = [
   { id: 'trash',      icon: '🗑️',  label: 'Recycle Bin', noAction: true },
 ];
 
-export default function DesktopIcons({ activeTab, onTabChange }) {
+export default function DesktopIcons({ activeTab, onTabChange, selectedIcon, onIconSelect, onContextMenu }) {
   return (
     <div
       style={{
@@ -27,6 +27,8 @@ export default function DesktopIcons({ activeTab, onTabChange }) {
     >
       {ICONS.map(({ id, icon, label, href, noAction }, i) => {
         const isActive = activeTab === id;
+        const isSelected = selectedIcon === id;
+
         return (
           <motion.button
             key={id}
@@ -35,14 +37,26 @@ export default function DesktopIcons({ activeTab, onTabChange }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.07, duration: 0.2 }}
             onClick={() => {
-              if (noAction) return;
               if (href) { window.open(href, '_blank'); return; }
-              onTabChange(id);
+              if (noAction) { onIconSelect?.(id); return; }
+              onIconSelect?.(id);
             }}
             onDoubleClick={() => {
-              if (noAction) return;
               if (href) { window.open(href, '_blank'); return; }
+              if (noAction) return;
               onTabChange(id);
+              onIconSelect?.(id);
+            }}
+            onKeyDown={(e) => {
+              if (e.key !== 'Enter') return;
+              if (href) { window.open(href, '_blank'); return; }
+              if (noAction) return;
+              onTabChange(id);
+              onIconSelect?.(id);
+            }}
+            onContextMenu={(e) => {
+              e.preventDefault();
+              onContextMenu?.(e, { id, href, noAction });
             }}
           >
             <span
@@ -57,9 +71,9 @@ export default function DesktopIcons({ activeTab, onTabChange }) {
             <span
               className="desktop-icon-label"
               style={{
-                background: isActive ? '#000080' : 'transparent',
+                background: isSelected ? '#000080' : 'transparent',
                 color: '#FFFFFF',
-                outline: isActive ? '1px dotted #FFFFFF' : 'none',
+                outline: isSelected ? '1px dotted #FFFFFF' : 'none',
               }}
             >
               {label}

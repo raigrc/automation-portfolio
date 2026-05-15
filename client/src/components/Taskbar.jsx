@@ -9,7 +9,7 @@ const TAB_LABELS = {
   contact:    '✉️ Contact.exe',
 };
 
-export default function Taskbar({ activeTab, onTabChange }) {
+export default function Taskbar({ activeTab, onTabChange, minimized, onRestore, onMinimize }) {
   const isMobile = useIsMobile();
   const [time, setTime] = useState('');
 
@@ -36,6 +36,11 @@ export default function Taskbar({ activeTab, onTabChange }) {
       }}
     />
   );
+
+  const handleWindowBtn = () => {
+    if (minimized) onRestore?.();
+    else onMinimize?.();
+  };
 
   return (
     <div
@@ -74,18 +79,29 @@ export default function Taskbar({ activeTab, onTabChange }) {
 
       {separator}
 
-      {/* Active window button */}
+      {/* Active window button — toggles minimize/restore */}
       {activeTab && (
         <button
-          className={activeTab ? 'taskbar-btn taskbar-btn-active' : 'taskbar-btn'}
+          onClick={handleWindowBtn}
           style={{
+            background: '#C0C0C0',
+            border: '2px solid',
+            borderColor: minimized
+              ? '#FFFFFF #808080 #808080 #FFFFFF'
+              : '#808080 #FFFFFF #FFFFFF #808080',
             padding: '2px 10px',
             fontSize: '11px',
+            fontFamily: 'Tahoma, Arial, sans-serif',
+            cursor: 'pointer',
             height: '26px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
             maxWidth: isMobile ? '120px' : '220px',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
+            boxShadow: minimized ? 'none' : 'inset 1px 1px 0 #808080',
           }}
         >
           {TAB_LABELS[activeTab] ?? '🪟 RavenOS 95'}
