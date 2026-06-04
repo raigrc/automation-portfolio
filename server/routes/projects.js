@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 // GET /api/projects — public
 router.get('/', async (req, res) => {
   try {
-    const projects = await Project.find().sort({ featured: -1, order: 1 });
+    const projects = await Project.find().sort({ order: 1, createdAt: -1 });
     res.json(projects);
   } catch (err) {
     res.status(500).json({ message: err.message });

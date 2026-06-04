@@ -1,76 +1,34 @@
 import { useState } from 'react';
 
-const COREMIND_PROJECTS = [
-  {
-    _id: 'cm-1',
-    title: 'EOD Report v2',
-    description: 'End-of-day automated report generator for CoreMind Technology. Aggregates daily metrics, team updates, and KPIs into a structured report delivered via Slack and email on schedule.',
-    tech: ['n8n', 'Slack API', 'OpenAI', 'MongoDB', 'Webhooks'],
-    company: 'Core Mind Technology',
-    icon: '📊',
-  },
-  {
-    _id: 'cm-2',
-    title: 'MightyWell Pipeline',
-    description: 'Automated lead intake and enrichment pipeline for MightyWell. Handles inbound lead data, enriches via external APIs, and routes qualified leads into the CRM automatically.',
-    tech: ['n8n', 'Make.com', 'REST APIs', 'MongoDB', 'Webhooks'],
-    company: 'Core Mind Technology',
-    icon: '🔄',
-  },
-  {
-    _id: 'cm-3',
-    title: 'Auto-Posting Automation',
-    description: 'Social media auto-posting workflow that schedules and publishes AI-generated content across Facebook, Instagram, and LinkedIn with performance tracking.',
-    tech: ['n8n', 'Meta Graph API', 'LinkedIn API', 'Google Sheets', 'OpenAI'],
-    company: 'Core Mind Technology',
-    icon: '📢',
-  },
-  {
-    _id: 'cm-4',
-    title: 'Content Generation Pipeline',
-    description: 'AI-powered content generation system that produces blog posts, social media captions, and marketing copy using large language models with brand voice consistency.',
-    tech: ['n8n', 'OpenAI GPT-4', 'Claude AI', 'Google Docs API', 'Airtable'],
-    company: 'Core Mind Technology',
-    icon: '✍️',
-  },
-  {
-    _id: 'cm-5',
-    title: 'Lead Enrichment Workflow',
-    description: 'Automated lead enrichment pipeline that augments raw contact data with company info, social profiles, and intent signals using multiple data providers and AI scoring.',
-    tech: ['n8n', 'Apollo.io', 'LinkedIn API', 'Clearbit', 'OpenAI'],
-    company: 'Core Mind Technology',
-    icon: '🎯',
-  },
-  {
-    _id: 'cm-6',
-    title: 'CoreMind Actors',
-    description: 'AI agent orchestration system managing specialized agents for CoreMind sales, support, and operations tasks with persistent memory and context management.',
-    tech: ['n8n', 'Claude AI', 'OpenAI', 'Webhooks', 'MongoDB'],
-    company: 'Core Mind Technology',
-    icon: '🤖',
-  },
-  {
-    _id: 'cm-7',
-    title: 'Leads Dashboard',
-    description: 'Real-time leads management dashboard for CoreMind Technology. Visualizes pipeline stages, conversion rates, and team performance metrics with live data updates.',
-    tech: ['Next.js', 'MongoDB', 'Recharts', 'Tailwind CSS', 'Node.js'],
-    company: 'Core Mind Technology',
-    icon: '📈',
-    githubUrl: 'https://github.com/raigrc/coremind-leads-dashboard',
-  },
-];
-
 export default function ProjectsTab({ projects, loading, isMobile }) {
-  const [selectedId, setSelectedId] = useState('cm-1');
+  const [selectedId, setSelectedId] = useState(null);
 
-  const coremindTitles = new Set(COREMIND_PROJECTS.map((p) => p.title.toLowerCase()));
-  const apiProjects = (projects ?? [])
-    .filter((p) => !coremindTitles.has(p.title?.toLowerCase()))
-    .slice(0, 5)
-    .map((p) => ({ ...p, icon: '📂' }));
+  const list = projects ?? [];
+  const selected = list.find((p) => p._id === selectedId) ?? list[0] ?? null;
 
-  const allProjects = [...COREMIND_PROJECTS, ...apiProjects];
-  const selected = allProjects.find((p) => p._id === selectedId) ?? allProjects[0];
+  if (loading) {
+    return <div style={{ padding: '20px', fontSize: '12px', color: '#444' }}>Loading projects…</div>;
+  }
+
+  if (list.length === 0) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '240px',
+          color: '#808080',
+          fontSize: '12px',
+          gap: '8px',
+        }}
+      >
+        <span style={{ fontSize: '32px' }}>📂</span>
+        <p>No projects yet. Add them from the admin dashboard.</p>
+      </div>
+    );
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '0' }}>
@@ -89,7 +47,7 @@ export default function ProjectsTab({ projects, loading, isMobile }) {
         <span>📁</span>
         <span style={{ fontWeight: 'bold' }}>My Projects</span>
         <div style={{ width: '1px', height: '16px', background: '#808080', marginLeft: '4px' }} />
-        <span style={{ color: '#444' }}>{allProjects.length} objects</span>
+        <span style={{ color: '#444' }}>{list.length} object{list.length !== 1 ? 's' : ''}</span>
       </div>
 
       {/* Explorer layout */}
@@ -111,14 +69,14 @@ export default function ProjectsTab({ projects, loading, isMobile }) {
             <span style={{ flex: 1 }}>Name</span>
           </div>
 
-          {allProjects.map((project) => (
+          {list.map((project) => (
             <div
               key={project._id}
-              className={selectedId === project._id ? 'file-row file-row-selected' : 'file-row'}
+              className={selected?._id === project._id ? 'file-row file-row-selected' : 'file-row'}
               onClick={() => setSelectedId(project._id)}
               style={{ fontSize: '11px' }}
             >
-              <span>{project.icon ?? '📂'}</span>
+              <span>{project.icon || '📂'}</span>
               <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {project.title}
               </span>
@@ -141,7 +99,7 @@ export default function ProjectsTab({ projects, loading, isMobile }) {
                   borderBottom: '1px solid #808080',
                 }}
               >
-                <span style={{ fontSize: '28px' }}>{selected.icon ?? '📂'}</span>
+                <span style={{ fontSize: '28px' }}>{selected.icon || '📂'}</span>
                 <div>
                   <p style={{ fontWeight: 'bold', fontSize: '13px', marginBottom: '2px' }}>
                     {selected.title}
@@ -222,7 +180,7 @@ export default function ProjectsTab({ projects, loading, isMobile }) {
       {/* Status bar */}
       <div className="win-statusbar" style={{ marginTop: '4px' }}>
         <span className="win-statusbar-cell" style={{ flex: 1 }}>
-          {selected ? selected.title : `${allProjects.length} objects`}
+          {selected ? selected.title : `${list.length} objects`}
         </span>
         <span className="win-statusbar-cell">
           {selected?.company ?? 'All Projects'}

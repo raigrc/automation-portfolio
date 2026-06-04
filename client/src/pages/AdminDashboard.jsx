@@ -218,7 +218,7 @@ function SkillsTab() {
 }
 
 /* ─────────────────── Projects Tab ─────────────────── */
-const emptyProject = { title: '', description: '', tech: '', githubUrl: '', liveUrl: '' };
+const emptyProject = { title: '', description: '', tech: '', company: '', icon: '', githubUrl: '', liveUrl: '', order: 0 };
 
 function ProjectsTab() {
   const [projects, setProjects] = useState([]);
@@ -241,7 +241,7 @@ function ProjectsTab() {
 
   const handleSave = async (e) => {
     e.preventDefault();
-    const payload = { ...form, tech: form.tech.split(',').map((t) => t.trim()).filter(Boolean) };
+    const payload = { ...form, tech: form.tech.split(',').map((t) => t.trim()).filter(Boolean), order: Number(form.order) || 0 };
     if (modal.mode === 'add') await api.post('/projects', payload);
     else await api.put(`/projects/${modal.id}`, payload);
     setModal(null);
@@ -261,8 +261,10 @@ function ProjectsTab() {
           <div key={p._id} className="flex items-start justify-between bg-surface border border-border rounded-xl p-4 gap-4">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
+                {p.icon && <span className="text-sm">{p.icon}</span>}
                 <span className="text-text-primary font-medium text-sm">{p.title}</span>
-                {p.featured && <span className="text-xs px-1.5 py-0.5 bg-primary/20 text-accent border border-primary/30 rounded">Featured</span>}
+                {p.company && <span className="text-xs px-1.5 py-0.5 bg-primary/20 text-accent border border-primary/30 rounded">{p.company}</span>}
+                {typeof p.order === 'number' && <span className="text-xs text-text-muted font-mono">#{p.order}</span>}
               </div>
               <p className="text-text-muted text-xs truncate">{p.description}</p>
               <div className="flex flex-wrap gap-1 mt-2">
@@ -286,10 +288,15 @@ function ProjectsTab() {
         <Modal title={modal.mode === 'add' ? 'Add Project' : 'Edit Project'} onClose={() => setModal(null)}>
           <form onSubmit={handleSave} className="space-y-4">
             <Input label="Title" name="title" value={form.title} onChange={onChange} />
-            <Textarea label="Description" name="description" value={form.description} onChange={onChange} rows={3} />
-            <Input label="Tech Stack (comma-separated)" name="tech" value={form.tech} onChange={onChange} placeholder="Playwright, TypeScript, GitHub Actions" />
+            <Textarea label="Description" name="description" value={form.description} onChange={onChange} rows={4} />
+            <Input label="Tech Stack (comma-separated)" name="tech" value={form.tech} onChange={onChange} placeholder="n8n, OpenAI, Google Sheets, Slack API" />
+            <div className="grid grid-cols-2 gap-4">
+              <Input label="Company" name="company" value={form.company} onChange={onChange} placeholder="Core Mind Technology" />
+              <Input label="Icon (emoji)" name="icon" value={form.icon} onChange={onChange} placeholder="📊 🔄 📢 ✍️ 🎯 📈" />
+            </div>
             <Input label="GitHub URL" name="githubUrl" value={form.githubUrl} onChange={onChange} />
             <Input label="Live Demo URL" name="liveUrl" value={form.liveUrl} onChange={onChange} />
+            <Input label="Display Order (lower = first)" name="order" type="number" value={form.order} onChange={onChange} placeholder="0" />
             <div className="flex gap-3 pt-2">
               <button type="submit" className="px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm rounded-lg">Save</button>
               <button type="button" onClick={() => setModal(null)} className="px-4 py-2 bg-surface2 text-text-muted text-sm rounded-lg border border-border">Cancel</button>

@@ -3,96 +3,32 @@ import { Link } from 'react-router-dom';
 import api from '../hooks/useApi';
 import { ProjectCard } from '../components/Projects';
 
-const COREMIND_PROJECTS = [
-  {
-    _id: 'cm-1',
-    title: 'EOD Report v2',
-    description: 'End-of-day automated report generator for CoreMind Technology. Aggregates daily metrics, team updates, and KPIs into a structured report delivered via Slack and email on schedule.',
-    tech: ['n8n', 'Slack API', 'OpenAI', 'MongoDB', 'Webhooks'],
-    featured: true,
-    company: 'Core Mind Technology',
-  },
-  {
-    _id: 'cm-2',
-    title: 'MightyWell Pipeline',
-    description: 'Automated lead intake and enrichment pipeline for MightyWell. Handles inbound lead data, enriches via external APIs, and routes qualified leads into the CRM automatically.',
-    tech: ['n8n', 'Make.com', 'REST APIs', 'MongoDB', 'Webhooks'],
-    featured: true,
-    company: 'Core Mind Technology',
-  },
-  {
-    _id: 'cm-3',
-    title: 'Auto-Posting Automation',
-    description: 'Social media auto-posting workflow that schedules and publishes AI-generated content across Facebook, Instagram, and LinkedIn with performance tracking.',
-    tech: ['n8n', 'Meta Graph API', 'LinkedIn API', 'Google Sheets', 'OpenAI'],
-    featured: true,
-    company: 'Core Mind Technology',
-  },
-  {
-    _id: 'cm-4',
-    title: 'Content Generation Pipeline',
-    description: 'AI-powered content generation system that produces blog posts, social media captions, and marketing copy using large language models with brand voice consistency.',
-    tech: ['n8n', 'OpenAI GPT-4', 'Claude AI', 'Google Docs API', 'Airtable'],
-    featured: true,
-    company: 'Core Mind Technology',
-  },
-  {
-    _id: 'cm-5',
-    title: 'Lead Enrichment Workflow',
-    description: 'Automated lead enrichment pipeline that augments raw contact data with company info, social profiles, and intent signals using multiple data providers and AI scoring.',
-    tech: ['n8n', 'Apollo.io', 'LinkedIn API', 'Clearbit', 'OpenAI'],
-    featured: true,
-    company: 'Core Mind Technology',
-  },
-  {
-    _id: 'cm-6',
-    title: 'CoreMind Actors',
-    description: 'AI agent orchestration system managing specialized agents for CoreMind sales, support, and operations tasks with persistent memory and context management.',
-    tech: ['n8n', 'Claude AI', 'OpenAI', 'Webhooks', 'MongoDB'],
-    featured: true,
-    company: 'Core Mind Technology',
-  },
-  {
-    _id: 'cm-7',
-    title: 'Leads Dashboard',
-    description: 'Real-time leads management dashboard for CoreMind Technology. Visualizes pipeline stages, conversion rates, and team performance metrics with live data updates.',
-    tech: ['Next.js', 'MongoDB', 'Recharts', 'Tailwind CSS', 'Node.js'],
-    featured: true,
-    company: 'Core Mind Technology',
-    githubUrl: 'https://github.com/raigrc/coremind-leads-dashboard',
-  },
-];
-
 export default function AllProjects() {
-  const [apiProjects, setApiProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('All');
 
   useEffect(() => {
     api.get('/projects')
-      .then((res) => setApiProjects(res.data))
+      .then((res) => setProjects(res.data))
       .catch((err) => console.error('Failed to fetch projects:', err))
       .finally(() => setLoading(false));
   }, []);
 
-  const coremindTitles = new Set(COREMIND_PROJECTS.map((p) => p.title.toLowerCase()));
-  const extraProjects = apiProjects.filter((p) => !coremindTitles.has(p.title?.toLowerCase()));
-  const allProjects = [...COREMIND_PROJECTS, ...extraProjects];
-
   const techFilters = useMemo(() => {
     const counts = {};
-    allProjects.forEach((p) => p.tech?.forEach((t) => { counts[t] = (counts[t] || 0) + 1; }));
+    projects.forEach((p) => p.tech?.forEach((t) => { counts[t] = (counts[t] || 0) + 1; }));
     const repeated = Object.entries(counts)
       .filter(([, c]) => c >= 2)
       .sort((a, b) => b[1] - a[1])
       .map(([tag]) => tag);
     return ['All', ...repeated];
-  }, [allProjects.length]);
+  }, [projects]);
 
   const filtered = useMemo(() => {
-    if (activeFilter === 'All') return allProjects;
-    return allProjects.filter((p) => p.tech?.includes(activeFilter));
-  }, [allProjects.length, activeFilter]);
+    if (activeFilter === 'All') return projects;
+    return projects.filter((p) => p.tech?.includes(activeFilter));
+  }, [projects, activeFilter]);
 
   if (loading) {
     return (
@@ -154,10 +90,16 @@ export default function AllProjects() {
         {/* Project list */}
         {filtered.length === 0 ? (
           <div className="win95-window" style={{ padding: '24px', textAlign: 'center', fontSize: '12px' }}>
-            No projects match this filter.
+            {projects.length === 0 ? 'No projects yet. Add them from the admin dashboard.' : 'No projects match this filter.'}
           </div>
         ) : (
-          <div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+              gap: '8px',
+            }}
+          >
             {filtered.map((project) => (
               <ProjectCard key={project._id} project={project} isCoremind={!!project.company} />
             ))}
