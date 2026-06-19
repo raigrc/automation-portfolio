@@ -8,6 +8,7 @@ const CATEGORY_ICONS = {
   'AI Models':       '🤖',
   'DevOps & CI/CD':  '🔄',
   Databases:         '🗄️',
+  'Cloud Storage':   '☁️',
 };
 
 export default function SkillsTab({ skills, loading, isMobile }) {
