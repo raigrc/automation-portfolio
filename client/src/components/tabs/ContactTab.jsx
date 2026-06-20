@@ -48,7 +48,7 @@ export default function ContactTab({ profile, loading, isMobile }) {
             {loading ? '…' : (profile?.name ?? 'Raven Garcia')}
           </p>
           <p style={{ fontSize: '10px', color: '#000080', marginBottom: '6px' }}>
-            AI Automation Developer
+            {loading ? '…' : (profile?.title ?? 'AI Engineer & Automation Developer')}
           </p>
           <div
             style={{
@@ -104,7 +104,7 @@ export default function ContactTab({ profile, loading, isMobile }) {
             {/* To field */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', borderBottom: '1px solid #C0C0C0', paddingBottom: '4px' }}>
               <span style={{ fontWeight: 'bold', width: '40px', color: '#000080' }}>To:</span>
-              <span style={{ color: '#444' }}>{loading ? '…' : (profile?.email ?? 'raven@portfolio.dev')}</span>
+              <span style={{ color: '#444' }}>{loading ? '…' : (profile?.email ?? '')}</span>
             </div>
 
             {/* From / Name */}
