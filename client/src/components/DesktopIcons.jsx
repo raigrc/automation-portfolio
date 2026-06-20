@@ -1,18 +1,19 @@
 import { motion } from 'framer-motion';
 
-const RESUME_URL = 'https://drive.google.com/file/d/1bAv4ITgZsKAireaXWUddg9Uf6DBQXf5H/view?usp=sharing';
+// Fallback only — the live résumé URL comes from the profile (admin-editable).
+const FALLBACK_RESUME_URL = 'https://drive.google.com/file/d/15x7pyWp-XVy8KZalX0fGKvghYKjR0gzE/view?usp=sharing';
 
-const ICONS = [
-  { id: 'about',      icon: '🖥️',  label: 'My Computer' },
-  { id: 'projects',   icon: '📁',  label: 'My Projects' },
-  { id: 'skills',     icon: '⚙️',  label: 'Control Panel' },
-  { id: 'experience', icon: '📄',  label: 'Work History.txt' },
-  { id: 'contact',    icon: '✉️',  label: 'Contact.exe' },
-  { id: 'resume',     icon: '📋',  label: 'Resume.pdf', href: RESUME_URL },
-  { id: 'trash',      icon: '🗑️',  label: 'Recycle Bin', noAction: true },
-];
+export default function DesktopIcons({ activeTab, onTabChange, selectedIcon, onIconSelect, onContextMenu, resumeUrl }) {
+  const ICONS = [
+    { id: 'about',      icon: '🖥️',  label: 'My Computer' },
+    { id: 'projects',   icon: '📁',  label: 'My Projects' },
+    { id: 'skills',     icon: '⚙️',  label: 'Control Panel' },
+    { id: 'experience', icon: '📄',  label: 'Work History.txt' },
+    { id: 'contact',    icon: '✉️',  label: 'Contact.exe' },
+    { id: 'resume',     icon: '📋',  label: 'Resume.pdf', href: resumeUrl || FALLBACK_RESUME_URL },
+    { id: 'trash',      icon: '🗑️',  label: 'Recycle Bin', noAction: true },
+  ];
 
-export default function DesktopIcons({ activeTab, onTabChange, selectedIcon, onIconSelect, onContextMenu }) {
   return (
     <div
       style={{

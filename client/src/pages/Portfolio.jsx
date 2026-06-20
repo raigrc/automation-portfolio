@@ -116,6 +116,7 @@ export default function Portfolio() {
             selectedIcon={selectedIcon}
             onIconSelect={setSelectedIcon}
             onContextMenu={handleContextMenu}
+            resumeUrl={data.profile?.resumeUrl}
           />
         )}
 
