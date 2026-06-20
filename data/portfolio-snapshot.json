@@ -1,0 +1,958 @@
+{
+  "generatedAt": "2026-06-20T09:04:48.071Z",
+  "source": "https://automation-portfolio-vrdyzcnn7q-uc.a.run.app/api",
+  "profile": {
+    "_id": "6a06113024992c6e4c5b50b3",
+    "name": "Raven Justin P. Garcia",
+    "title": "AI Engineer & Automation Developer",
+    "subtitle": "Developer specializing in AI automation workflows, MCP integrations, and multi-platform business systems.",
+    "bio": "Most of what I do lives inside n8n and Claude Code — wiring up AI models, scraping pipelines, and business APIs into workflows that run on their own. I've shipped a voice AI therapy assistant, a WhatsApp automation system, a multi-source lead acquisition pipeline, and cross-platform social automation across 5 platforms. Promoted to manage the AI/Dev department at Core Mind Technology within 2 months — I still write the code, I just also make sure the team does too. I like building things that keep working while nobody's watching.",
+    "image": "https://pub-2dac9c19287347b4a58fd27871bed5d9.r2.dev/RDP%2051112%20GARCIA-low.png",
+    "email": "ravenjstn.grc@gmail.com",
+    "linkedin": "https://linkedin.com/in/raigrc/",
+    "resumeUrl": "https://drive.google.com/file/d/15x7pyWp-XVy8KZalX0fGKvghYKjR0gzE/view?usp=sharing",
+    "location": "San Pedro, Laguna, Philippines",
+    "createdAt": "2026-05-14T18:15:12.577Z",
+    "updatedAt": "2026-06-20T08:45:03.561Z",
+    "__v": 0,
+    "stack": "Claude · n8n · React · Node.js · MongoDB · Supabase · OpenAI",
+    "github": "https://github.com/raigrc"
+  },
+  "skills": [
+    {
+      "_id": "6a06113024992c6e4c5b50cb",
+      "name": "OpenAI (GPT-4.1/TTS)",
+      "category": "AI Models",
+      "level": 92,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50be",
+      "name": "n8n",
+      "category": "Automation Tools",
+      "level": 95,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a358379a18f9f8feded9b80",
+      "name": "Amazon S3",
+      "category": "Cloud Storage",
+      "level": 72,
+      "order": 1,
+      "createdAt": "2026-06-19T17:59:21.014Z",
+      "updatedAt": "2026-06-19T17:59:21.014Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50da",
+      "name": "MongoDB",
+      "category": "Databases",
+      "level": 85,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d5",
+      "name": "GitHub Actions",
+      "category": "DevOps & CI/CD",
+      "level": 78,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50bb",
+      "name": "React",
+      "category": "Frameworks",
+      "level": 80,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50b6",
+      "name": "JavaScript",
+      "category": "Languages",
+      "level": 85,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.638Z",
+      "updatedAt": "2026-05-14T18:15:12.638Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c8",
+      "name": "Apify",
+      "category": "Scraping & Data",
+      "level": 80,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50cc",
+      "name": "Claude (Anthropic)",
+      "category": "AI Models",
+      "level": 90,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50bf",
+      "name": "MCP",
+      "category": "Automation Tools",
+      "level": 92,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a358379a18f9f8feded9b83",
+      "name": "Google Cloud Storage",
+      "category": "Cloud Storage",
+      "level": 70,
+      "order": 2,
+      "createdAt": "2026-06-19T17:59:21.065Z",
+      "updatedAt": "2026-06-19T17:59:21.065Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50db",
+      "name": "Supabase",
+      "category": "Databases",
+      "level": 78,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d6",
+      "name": "Vercel",
+      "category": "DevOps & CI/CD",
+      "level": 82,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50bc",
+      "name": "Next.js",
+      "category": "Frameworks",
+      "level": 78,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50b7",
+      "name": "TypeScript",
+      "category": "Languages",
+      "level": 78,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c9",
+      "name": "Crawlee",
+      "category": "Scraping & Data",
+      "level": 75,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50cd",
+      "name": "Google Gemini",
+      "category": "AI Models",
+      "level": 85,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a358378a18f9f8feded9b6e",
+      "name": "VAPI",
+      "category": "Automation Tools",
+      "level": 85,
+      "order": 3,
+      "createdAt": "2026-06-19T17:59:20.708Z",
+      "updatedAt": "2026-06-19T17:59:20.708Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c0",
+      "name": "REST APIs",
+      "category": "Automation Tools",
+      "level": 90,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50dc",
+      "name": "PostgreSQL",
+      "category": "Databases",
+      "level": 72,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d7",
+      "name": "Docker",
+      "category": "DevOps & CI/CD",
+      "level": 65,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50bd",
+      "name": "Tailwind CSS",
+      "category": "Frameworks",
+      "level": 85,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50b8",
+      "name": "Python",
+      "category": "Languages",
+      "level": 72,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ca",
+      "name": "Firecrawl",
+      "category": "Scraping & Data",
+      "level": 78,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ce",
+      "name": "Hume AI",
+      "category": "AI Models",
+      "level": 82,
+      "order": 4,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a358378a18f9f8feded9b7d",
+      "name": "xAI / Grok",
+      "category": "AI Models",
+      "level": 78,
+      "order": 4,
+      "createdAt": "2026-06-19T17:59:20.965Z",
+      "updatedAt": "2026-06-19T17:59:20.965Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c1",
+      "name": "WhatsApp Business API (Z-API)",
+      "category": "Automation Tools",
+      "level": 88,
+      "order": 4,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50dd",
+      "name": "MySQL",
+      "category": "Databases",
+      "level": 75,
+      "order": 4,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d8",
+      "name": "Git",
+      "category": "DevOps & CI/CD",
+      "level": 85,
+      "order": 4,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50b9",
+      "name": "HTML",
+      "category": "Languages",
+      "level": 80,
+      "order": 4,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50cf",
+      "name": "ElevenLabs",
+      "category": "AI Models",
+      "level": 82,
+      "order": 5,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c2",
+      "name": "Telegram Bot API",
+      "category": "Automation Tools",
+      "level": 82,
+      "order": 5,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d9",
+      "name": "pnpm",
+      "category": "DevOps & CI/CD",
+      "level": 80,
+      "order": 5,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.640Z",
+      "updatedAt": "2026-05-14T18:15:12.640Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ba",
+      "name": "CSS",
+      "category": "Languages",
+      "level": 78,
+      "order": 5,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d0",
+      "name": "Mistral/Qwen",
+      "category": "AI Models",
+      "level": 78,
+      "order": 6,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c3",
+      "name": "Meta API",
+      "category": "Automation Tools",
+      "level": 80,
+      "order": 6,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d1",
+      "name": "OpenRouter",
+      "category": "AI Models",
+      "level": 82,
+      "order": 7,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c4",
+      "name": "Slack API",
+      "category": "Automation Tools",
+      "level": 80,
+      "order": 7,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d2",
+      "name": "fal.ai",
+      "category": "AI Models",
+      "level": 78,
+      "order": 8,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c5",
+      "name": "Google Cloud Functions",
+      "category": "Automation Tools",
+      "level": 75,
+      "order": 8,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a358378a18f9f8feded9b71",
+      "name": "LinkedIn API",
+      "category": "Automation Tools",
+      "level": 78,
+      "order": 8,
+      "createdAt": "2026-06-19T17:59:20.761Z",
+      "updatedAt": "2026-06-19T17:59:20.761Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d3",
+      "name": "Replicate",
+      "category": "AI Models",
+      "level": 76,
+      "order": 9,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c6",
+      "name": "Smartlead",
+      "category": "Automation Tools",
+      "level": 75,
+      "order": 9,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a358378a18f9f8feded9b74",
+      "name": "Twitter / X API",
+      "category": "Automation Tools",
+      "level": 76,
+      "order": 9,
+      "createdAt": "2026-06-19T17:59:20.813Z",
+      "updatedAt": "2026-06-19T17:59:20.813Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50d4",
+      "name": "Google TTS",
+      "category": "AI Models",
+      "level": 76,
+      "order": 10,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50c7",
+      "name": "Close CRM",
+      "category": "Automation Tools",
+      "level": 72,
+      "order": 10,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.639Z",
+      "updatedAt": "2026-05-14T18:15:12.639Z"
+    },
+    {
+      "_id": "6a358378a18f9f8feded9b77",
+      "name": "YouTube Data API",
+      "category": "Automation Tools",
+      "level": 78,
+      "order": 10,
+      "createdAt": "2026-06-19T17:59:20.862Z",
+      "updatedAt": "2026-06-19T17:59:20.862Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a358378a18f9f8feded9b7a",
+      "name": "GoHighLevel (GHL)",
+      "category": "Automation Tools",
+      "level": 60,
+      "order": 15,
+      "createdAt": "2026-06-19T17:59:20.912Z",
+      "updatedAt": "2026-06-19T17:59:20.912Z",
+      "__v": 0
+    }
+  ],
+  "projects": [
+    {
+      "_id": "6a215c183aa78a9b3fd651cf",
+      "title": "Real-Time Lead Pipeline Dashboard",
+      "description": "Built an isolated Next.js dashboard that gives the team real-time visibility into the lead pipeline. Surfaces pipeline stages, conversion rates, and performance metrics with live data, so leadership can see where leads stand without digging through spreadsheets. Deployed independently on Vercel for fast, always-on access.\n",
+      "tech": [
+        "Next.js",
+        "Google Sheets",
+        "Vercel"
+      ],
+      "githubUrl": "",
+      "liveUrl": "",
+      "featured": false,
+      "order": 0,
+      "createdAt": "2026-06-04T11:06:00.789Z",
+      "updatedAt": "2026-06-19T17:59:20.289Z",
+      "__v": 0,
+      "company": "Core Mind Technology",
+      "icon": "📊"
+    },
+    {
+      "_id": "6a215bcb3aa78a9b3fd651cc",
+      "title": "AI Content Generation Workflow",
+      "description": "Built an AI content generation pipeline that drafts social media captions and image prompts on demand. For each post idea, the workflow generates platform-tailored caption variants and a matching image generation prompt, producing brand-consistent content at scale. Supports multiple brands and multiple platforms, so a single topic can spin out into a full set of ready-to-publish variants. Feeds directly into the cross-platform posting system.",
+      "tech": [
+        "n8n",
+        "OpenAI",
+        "Google Sheets"
+      ],
+      "githubUrl": "",
+      "liveUrl": "",
+      "featured": false,
+      "order": 0,
+      "createdAt": "2026-06-04T11:04:43.378Z",
+      "updatedAt": "2026-06-19T17:59:20.365Z",
+      "__v": 0,
+      "company": "Core Mind Technology",
+      "icon": "✍️"
+    },
+    {
+      "_id": "6a215bb43aa78a9b3fd651c9",
+      "title": "Cross-Platform Social Media Automation",
+      "description": "Built a social media automation system that publishes content across five platforms — Facebook, Instagram, TikTok, X, and LinkedIn — from a single Google Sheet. Each row defines a post, and a per-post platform selector controls exactly where it goes, so one piece of content can fan out to all five or target just one. The system supports multiple brands, handling each company's accounts and credentials independently. Marketing schedules a sheet, the automation handles the rest.",
+      "tech": [
+        "n8n",
+        "Meta Graph API",
+        "LinkedIn API",
+        "Google Sheets"
+      ],
+      "githubUrl": "",
+      "liveUrl": "",
+      "featured": false,
+      "order": 0,
+      "createdAt": "2026-06-04T11:04:20.393Z",
+      "updatedAt": "2026-06-19T17:59:20.340Z",
+      "__v": 0,
+      "company": "Core Mind Technology",
+      "icon": "📡"
+    },
+    {
+      "_id": "6a215b703aa78a9b3fd651c4",
+      "title": "Automated EOD Reporting System",
+      "description": "Built an end-to-end end-of-day reporting system that replaced manual status updates across the company. Employees submit their daily reports through a 13-field Formaloo form, and an n8n workflow routes each submission to the right people via Slack DM — sending reports both to direct managers and skip-level leadership automatically based on org structure. Every submission is also logged to Google Sheets for historical tracking. What used to be a scattered, manual process now runs on its own every single day.",
+      "tech": [
+        "n8n",
+        "Formaloo",
+        "Slack API",
+        "Google Sheets"
+      ],
+      "githubUrl": "",
+      "liveUrl": "",
+      "featured": false,
+      "order": 0,
+      "createdAt": "2026-06-04T11:03:12.560Z",
+      "updatedAt": "2026-06-19T17:59:20.316Z",
+      "__v": 0,
+      "company": "Core Mind Technology",
+      "icon": "📋"
+    },
+    {
+      "_id": "6a215b0c3aa78a9b3fd651bb",
+      "title": "Client Acquisition Pipeline",
+      "description": "Built a full client acquisition pipeline that handles both lead sourcing and outbound outreach in one automated flow. Apify actors scrape prospect leads from Facebook groups, Reddit, and Google Maps, then the data is normalized and deduplicated. OpenAI scores each lead from 1–10 and routes them into Hot, Warm, or Cold buckets based on fit and intent. Hot and Warm leads are automatically reached out to via personalized email — turning a raw scrape into an active outbound campaign without manual intervention. Results sync to Google Sheets with real-time Slack alerts.",
+      "tech": [
+        "Apify",
+        "n8n",
+        "OpenAI",
+        "Google Sheets",
+        "Slack API"
+      ],
+      "githubUrl": "",
+      "liveUrl": "",
+      "featured": false,
+      "order": 0,
+      "createdAt": "2026-06-04T11:01:32.345Z",
+      "updatedAt": "2026-06-19T17:59:20.260Z",
+      "__v": 0,
+      "company": "Core Mind Technology · MightyWell",
+      "icon": "🎯"
+    },
+    {
+      "_id": "6a215ad03aa78a9b3fd651b8",
+      "title": "AI Voice Receptionist",
+      "description": "Built an AI voice receptionist that handles inbound calls from prospects asking about their plans, subscriptions, and services — fully automated, no human needed on the first touchpoint. The assistant answers questions conversationally using a VAPI-powered voice agent trained on client's offerings. When a caller shows intent to move forward, the system has three tools available: transfer the call directly to the CEO, send a Calendly booking link via n8n so the prospect can schedule a meeting on their own, or end the call gracefully. High-intent leads never fall through — they either get a human or a calendar link before hanging up.",
+      "tech": [
+        "VAPI",
+        "n8n",
+        "Calendly",
+        "OpenAI"
+      ],
+      "githubUrl": "",
+      "liveUrl": "",
+      "featured": false,
+      "order": 0,
+      "createdAt": "2026-06-04T11:00:32.275Z",
+      "updatedAt": "2026-06-19T17:59:20.210Z",
+      "__v": 0,
+      "company": "Core Mind Technology · MightyWell",
+      "icon": "📞"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50e6",
+      "title": "AI Hypnotherapy Voice Chat System",
+      "description": "Built a voice AI assistant for the Hypnoelp mobile hypnotherapy app. Users speak, the audio gets transcribed by Mistral Voxtral, an AI processes the context and therapeutic intent, then a spoken response is sent back via OpenAI TTS. Sessions are stored in Supabase so the AI carries context across conversations.",
+      "tech": [
+        "n8n",
+        "Mistral Voxtral",
+        "OpenAI TTS",
+        "Supabase",
+        "Webhook API",
+        "Real-time",
+        "Therapy AI",
+        "Voice-to-Voice",
+        "Healthcare AI"
+      ],
+      "featured": true,
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.174Z",
+      "company": "Omelas AI",
+      "icon": "🧘"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50e7",
+      "title": "WhatsApp Business Automation System",
+      "description": "Built a WhatsApp automation system using MCP client/server architecture with Z-API integration. Handles automated messaging, contact management, and multi-modal communication. Routes and processes over 1000 messages daily with real-time response capabilities connected to Gmail, Calendar, and Google Sheets.",
+      "tech": [
+        "n8n",
+        "MCP",
+        "Z-API",
+        "MCP Architecture",
+        "Gmail Integration",
+        "Calendar Integration",
+        "Google Sheet",
+        "Multi-modal",
+        "Real-time"
+      ],
+      "featured": true,
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.235Z",
+      "company": "Omelas AI",
+      "icon": "💬"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50e8",
+      "title": "MaxTracks - Automated Package Tracking",
+      "description": "Developed an automated package tracking system with real-time status lookup and bulk customer notification capabilities. The system integrates with multiple courier APIs, processes tracking queries automatically, and sends proactive updates to customers, reducing manual customer service workload by 80%.",
+      "tech": [
+        "n8n",
+        "OpenAI",
+        "MCP",
+        "REST API",
+        "Bulk Processing",
+        "24/7 Availability",
+        "Customer Service"
+      ],
+      "featured": true,
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.419Z",
+      "company": "Omelas AI",
+      "icon": "📦"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50e9",
+      "title": "AI Faceless Video Content Pipeline",
+      "description": "An n8n pipeline with 7 AI agents that handles the full video production cycle — trend research, script writing, visual generation, and voiceover synthesis — without any manual steps in between. Each agent hands off to the next until a finished, platform-ready video comes out the other end.",
+      "tech": [
+        "n8n",
+        "Qwen Vision",
+        "Mistral AI",
+        "Google TTS",
+        "Multi-AI Orchestration",
+        "End-to-End Automation",
+        "7 AI Agents",
+        "Multi-Agent"
+      ],
+      "featured": true,
+      "order": 4,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.444Z",
+      "icon": "🎬"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ea",
+      "title": "Telegram Voice Bot",
+      "description": "A Telegram bot that handles voice messages conversationally. Send it a voice note, it transcribes it with Google Gemini, runs it through an AI agent, and replies with a spoken voice message via OpenAI TTS. Feels more like talking to something than typing commands at it.",
+      "tech": [
+        "n8n",
+        "Google Gemini",
+        "OpenAI TTS",
+        "Telegram API",
+        "TTS Enabled",
+        "Voice Processing",
+        "Natural Conversation",
+        "Chatbot"
+      ],
+      "featured": true,
+      "order": 5,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.565Z",
+      "icon": "🎙️"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50eb",
+      "title": "WhatsApp AI Chatbot for Any Business",
+      "description": "Built a plug-and-play WhatsApp AI chatbot that any business can deploy in minutes. Connects the WhatsApp Business API to an AI agent with persistent per-user conversation memory — so it actually remembers the context of each conversation. The system prompt is fully customizable, making this a reusable template for any industry or use case.",
+      "tech": [
+        "n8n",
+        "WhatsApp API",
+        "OpenRouter",
+        "GPT-4.1",
+        "Window Memory",
+        "Conversational AI",
+        "Business Chatbot",
+        "Think Tool",
+        "Per-User Sessions"
+      ],
+      "featured": false,
+      "order": 6,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.592Z",
+      "icon": "🤖"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ec",
+      "title": "Sora2 AI Video Generation & Auto-Publish Pipeline",
+      "description": "Automated an end-to-end video creation workflow using OpenAI's Sora2 model via the kie.ai API. GPT-4.1 generates a detailed cinematic prompt from a topic idea, Sora2 renders the video in HD, and the pipeline polls for completion before uploading and publishing directly to YouTube through Blotato — fully hands-off from concept to published content.",
+      "tech": [
+        "n8n",
+        "Sora2",
+        "kie.ai API",
+        "GPT-4.1",
+        "Blotato",
+        "YouTube API",
+        "AI Video",
+        "Auto-Publish",
+        "Content Automation"
+      ],
+      "featured": false,
+      "order": 7,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.467Z",
+      "icon": "🎥"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ed",
+      "title": "Facebook Marketplace Car Flipping Analyzer",
+      "description": "Built a full car flipping analysis pipeline that pulls live listings from Facebook Marketplace, normalizes the raw data, estimates fair market values using model-specific depreciation logic, and calculates realistic California flip costs. A GPT-powered analyst agent then evaluates each deal and outputs STRONG_BUY, BUY, CONSIDER, or PASS verdicts straight into a Google Sheet.",
+      "tech": [
+        "n8n",
+        "Facebook Marketplace API",
+        "GPT-4o mini",
+        "Google Sheets",
+        "Gmail",
+        "Market Analysis",
+        "ROI Calculator",
+        "Risk Assessment",
+        "Data Normalization"
+      ],
+      "featured": false,
+      "order": 8,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.539Z",
+      "icon": "🚗"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ee",
+      "title": "Telegram Stock Analysis AI Agent",
+      "description": "Built a Telegram stock analysis bot that acts like a seasoned Wall Street veteran. Users send any stock ticker and the bot fetches a live TradingView chart with MACD and Volume overlays, analyzes it using a multimodal AI model, and delivers a full technical breakdown — candlestick patterns, support/resistance levels, momentum shifts — topped with a definitive BUY, SELL, or HOLD verdict.",
+      "tech": [
+        "n8n",
+        "Telegram API",
+        "GPT-4.1",
+        "Gemini 2.5 Flash",
+        "chart-img API",
+        "Technical Analysis",
+        "Multi-modal AI",
+        "OpenRouter",
+        "Conversational Memory"
+      ],
+      "featured": false,
+      "order": 9,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.515Z",
+      "icon": "📈"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50ef",
+      "title": "AI Content Creation Team with VEO3 & NanoBanana",
+      "description": "Built a Telegram-triggered content pipeline that intelligently routes each input to the right AI model. Text prompts go to NanoBanana for image generation or VEO3 for video; uploaded images get AI-enhanced with SeedDream or converted into video. Everything runs async through fal.ai's queue and polls until complete before sending results back — one message, multiple creative outputs.",
+      "tech": [
+        "n8n",
+        "fal.ai",
+        "VEO3",
+        "NanoBanana",
+        "SeedDream v4",
+        "Telegram API",
+        "Image Generation",
+        "Image-to-Video",
+        "Async Polling"
+      ],
+      "featured": false,
+      "order": 10,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.766Z",
+      "updatedAt": "2026-06-19T17:59:20.491Z",
+      "icon": "🍌"
+    },
+    {
+      "_id": "6a358378a18f9f8feded9b6b",
+      "title": "Zinho Media — Client Automation Builds",
+      "description": "Built n8n automation workflows from client briefs: content marketing systems, AI-powered stock analysis agents, WhatsApp business chatbots, video generation pipelines, and marketplace automation. Integrated OpenAI GPT-4, Google Gemini, VEO3, Sora2, Firecrawl, and OpenRouter.",
+      "tech": [
+        "n8n",
+        "OpenAI GPT-4",
+        "Google Gemini",
+        "VEO3",
+        "Sora2",
+        "Firecrawl",
+        "OpenRouter",
+        "Client Work"
+      ],
+      "company": "Zinho Media",
+      "icon": "🛠️",
+      "order": 17,
+      "createdAt": "2026-06-19T17:59:20.656Z",
+      "updatedAt": "2026-06-19T17:59:20.656Z",
+      "__v": 0
+    }
+  ],
+  "experience": [
+    {
+      "_id": "6a06113024992c6e4c5b50e0",
+      "company": "Core Mind Technology",
+      "role": "Manager, AI Automation Developer",
+      "type": "Full-time",
+      "location": "Remote",
+      "startDate": "March 2026",
+      "endDate": "June 2026",
+      "current": false,
+      "bullets": [
+        "Promoted from mid-level AI engineer to department manager within 2 months; led a team of 3 engineers, supported",
+        "and guided interns, and maintained delivery across concurrent client builds.",
+        "Engineered an end-to-end lead acquisition pipeline for client MightyWell’s health enrollment campaign – Apify",
+        "scraped Facebook Groups, Reddit, and Google Maps; n8n orchestrated the flow; OpenAI scored each lead 1–10 and",
+        "routed Hot/Warm contacts into automated personalized outbound email, synced to Google Sheets with real-time",
+        "Slack alerts.",
+        "Built a company-wide EOD reporting system: employees submit a Formaloo form, n8n routes each entry to both",
+        "direct managers and skip-level leadership via Slack DM, and every submission is logged to Google Sheets – replaced",
+        "a fully manual process for all 22 employees",
+        "Automated content publishing across Facebook, Instagram, TikTok, X, and LinkedIn for CoreMind and subsidiaries",
+        "– managed via Google Sheet with per-post platform targeting, paired with an AI pipeline that generates",
+        "platform-specific captions and image prompts on demand.",
+        "Shipped a real-time lead pipeline dashboard in Next.js deployed on Vercel, giving leadership live visibility into",
+        "pipeline stages and conversion metrics without digging through spreadsheets.",
+        "Collaborated on an inbound AI voice receptionist for MightyWell built on VAPI – answers prospect questions on",
+        "first touch with no human required, then routes high-intent callers by transferring to the CEO, sending a Calendly",
+        "booking link via n8n, or ending the call gracefully."
+      ],
+      "order": 1,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.700Z",
+      "updatedAt": "2026-06-20T08:43:53.878Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50e1",
+      "company": "Omelas AI",
+      "role": "AI Engineer & Automation Developer",
+      "type": "Full-time",
+      "location": "Remote",
+      "startDate": "February 2025",
+      "endDate": "February 2026",
+      "current": false,
+      "bullets": [
+        "Developed AI voice chatbot system for HypnoElp mobile hypnotherapy application using webhook-triggered architecture, providing real-time conversational support for users addressing sleep disorders, smoking cessation, anxiety, and stress management.",
+        "Integrated Hume AI emotional intelligence and Eleven Labs voice synthesis APIs to create natural, empathetic voice interactions for personalized hypnotherapy guidance.",
+        "Designed and implemented complex automation workflows using n8n, MCP (Model Context Protocol), and AI integrations to transform client business operations and streamline internal processes.",
+        "Built comprehensive WhatsApp business automation system using MCP client/server architecture with Z-API integration, enabling automated messaging, contact management, and multi-modal communication.",
+        "Developed automated package tracking system (MaxTracks) with real-time status lookup and bulk customer notification capabilities, reducing manual customer service workload by 80%."
+      ],
+      "order": 2,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.700Z",
+      "updatedAt": "2026-05-14T18:15:12.700Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50e2",
+      "company": "Zinho Media",
+      "role": "Technical Content Creator & Automation Specialist",
+      "type": "Part-time",
+      "location": "Remote",
+      "startDate": "September 2025",
+      "endDate": "November 2025",
+      "current": false,
+      "bullets": [
+        "Received project briefs and built n8n automation workflows from scratch based on client requirements, covering use cases such as content marketing systems, AI-powered stock analysis agents, WhatsApp business chatbots, video generation pipelines, and Facebook Marketplace automation.",
+        "Wrote YouTube scripts and technical documentation for each boss-approved workflow, giving content creators clear guidelines on workflow logic, API integrations, and step-by-step setup.",
+        "Produced screen recordings of live n8n workflows and integrated tools in action, following the approved script to deliver accurate and easy-to-follow visual walkthroughs.",
+        "Integrated AI services including OpenAI GPT-4, Google Gemini, VEO3, Sora2, Firecrawl, and OpenRouter to build production-ready automation solutions."
+      ],
+      "order": 3,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.700Z",
+      "updatedAt": "2026-05-14T18:15:12.700Z"
+    },
+    {
+      "_id": "6a06113024992c6e4c5b50e3",
+      "company": "Gleent Incorporated",
+      "role": "Administrative Coordinator Intern",
+      "type": "Internship",
+      "location": "On-site",
+      "startDate": "April 2024",
+      "endDate": "July 2024",
+      "current": false,
+      "bullets": [
+        "Optimized administrative processes through automation, improving operational efficiency by 20% via systematic tracking and automated follow-up procedures.",
+        "Created and maintained comprehensive databases using Excel with automated data validation and reporting features to track over 200 records, reducing manual data entry time by 30%."
+      ],
+      "order": 4,
+      "__v": 0,
+      "createdAt": "2026-05-14T18:15:12.700Z",
+      "updatedAt": "2026-05-14T18:15:12.700Z"
+    }
+  ]
+}

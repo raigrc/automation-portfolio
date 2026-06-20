@@ -6,9 +6,34 @@ const Skill = require("./models/Skill");
 const Experience = require("./models/Experience");
 const Project = require("./models/Project");
 
+// seed.js is RECOVERY-ONLY. It deletes every collection before re-inserting.
+// It refuses to run on a populated database unless --force-recovery is passed.
+// To make content changes use apply-changes.js instead. See OPERATIONS.md.
+const FORCE = process.argv.includes("--force-recovery");
+
 async function seed() {
   await mongoose.connect(process.env.MONGO_URI);
   console.log("Connected to MongoDB");
+
+  const counts = {
+    profiles: await Profile.estimatedDocumentCount(),
+    skills: await Skill.estimatedDocumentCount(),
+    experiences: await Experience.estimatedDocumentCount(),
+    projects: await Project.estimatedDocumentCount(),
+  };
+  const populated = Object.values(counts).some((c) => c > 0);
+  if (populated && !FORCE) {
+    console.error("\n⚠  ABORTING: the database already contains data.");
+    console.error("   counts:", JSON.stringify(counts));
+    console.error("   seed.js is RECOVERY-ONLY and would DELETE all of it.");
+    console.error("   To make content changes, use:  node apply-changes.js   (see OPERATIONS.md)");
+    console.error("   To force a destructive full re-seed anyway:  node seed.js --force-recovery\n");
+    await mongoose.disconnect();
+    process.exit(1);
+  }
+  if (populated && FORCE) {
+    console.warn("\n⚠  --force-recovery: wiping and re-seeding a populated database.\n");
+  }
 
   // Profile
   await Profile.deleteMany({});
@@ -17,7 +42,7 @@ async function seed() {
     title: "AI Engineer & Automation Developer",
     subtitle:
       "Developer specializing in AI automation workflows, MCP integrations, and multi-platform business systems.",
-    bio: "Most of what I do lives inside n8n and Claude Code — wiring up AI models, scraping pipelines, and business APIs into workflows that run on their own. I've shipped a voice AI therapy assistant, a WhatsApp automation system, a multi-source lead acquisition pipeline, and cross-platform social automation across 5 platforms. Recently promoted to manage the AI/Dev department at Core Mind Technology — I still write the code, I just also make sure the team does too. I like building things that keep working while nobody's watching.",
+    bio: "Most of what I do lives inside n8n and Claude Code — wiring up AI models, scraping pipelines, and business APIs into workflows that run on their own. I've shipped a voice AI therapy assistant, a WhatsApp automation system, a multi-source lead acquisition pipeline, and cross-platform social automation across 5 platforms. Promoted to manage the AI/Dev department at Core Mind Technology within 2 months — I still write the code, I just also make sure the team does too. I like building things that keep working while nobody's watching.",
     image:
       "https://pub-2dac9c19287347b4a58fd27871bed5d9.r2.dev/RDP%2051112%20GARCIA-low.png",
     stack: "Claude · n8n · React · Node.js · MongoDB · Supabase · OpenAI",

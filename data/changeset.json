@@ -1,0 +1,7 @@
+{
+  "_readme": "Claude fills this in from data/REQUESTED-CHANGES.md, runs `node apply-changes.js` (dry run) to show you the diff, and applies with `--commit` ONLY after you confirm. Match keys: skills=name, projects=title, experience=company. Profile is a singleton -> use profile.set. Inserts must include all required fields (skills: name+category; projects: title+description; experience: company+role+startDate). Leave arrays empty when unused. This file is scratch space; it can be reset to empty after applying.",
+  "profile": { "set": {} },
+  "skills": { "upsert": [], "delete": [] },
+  "projects": { "upsert": [], "delete": [] },
+  "experience": { "upsert": [], "delete": [] }
+}

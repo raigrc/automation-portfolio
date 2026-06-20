@@ -12,6 +12,16 @@ Taglish is fine. No fluff.
 - **Client port:** Vite default (5173) — check `vite.config.js` if different
 - **Structure:** `client/src/` for all frontend code, `server/` for API
 
+## Data & Deployment — READ `OPERATIONS.md`
+
+**The live MongoDB is the single source of truth — not `seed.js`.** Full runbook in `OPERATIONS.md`. The essentials:
+
+- **Content** (projects/skills/experience/profile text): change it via the API tools, never by editing the DB blindly or re-seeding. It goes **live immediately** (the site is DB-driven) — no deploy.
+  - `cd server && node scan.mjs` → mirror current live state to `data/portfolio-snapshot.{json,md}` (read-only).
+  - Write requests in `data/REQUESTED-CHANGES.md` → Claude builds `data/changeset.json` → `node apply-changes.js` (dry run) → **confirm with Rai** → `node apply-changes.js --commit` → `node scan.mjs`.
+- **Code/design**: edit `client/`/`server/`, then `git push` to `main` → auto-deploys (server via Cloud Build, client via Cloudflare Pages).
+- ⚠️ **Never run `seed.js` to make changes** — it wipes every collection (now guarded to refuse on a populated DB; recovery-only).
+
 ## Design Direction — Windows 95/98 Classic UI
 
 This portfolio uses a retro Win32 / Windows 95-98 aesthetic. Every UI decision should align with this:
